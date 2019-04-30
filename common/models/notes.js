@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 module.exports = async function(Notes) {
 
@@ -10,9 +10,9 @@ module.exports = async function(Notes) {
                     fields: ['username', 'email'], // only show two fields
                     include: { // include notes for the users
                         relation: 'notes',
-                        scope: {
-                            where: { userId: 'data.id' } //{ userId: '$state.params.id' }  only select notes with this id 
-                        }
+                        // scope: {
+                        //     where: { userId: 'data.id' } //{ userId: '$state.params.id' }  only select notes with this id 
+                        // }
                     }
                 }
             }

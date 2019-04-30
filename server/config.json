@@ -4,6 +4,9 @@
   "port": 3000,
   "remoting": {
     "context": false,
+    "types": {
+      "warnOnUnknownType": false
+    },
     "rest": {
       "handleErrors": false,
       "normalizeHttpPath": false,
