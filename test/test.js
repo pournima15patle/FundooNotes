@@ -9,11 +9,6 @@
 
     chai.use(chaiHttp);
 
-    // beforeEach('Setting up the userList', function(){
-    //     console.log('beforeEach');
-    //     getNotes.loadUserList(['abc123','xyz321']);
-    //   });
-
     describe('login', function () {
 
         describe('login', function () {
@@ -34,7 +29,7 @@
                     .send(data)
                     .end(function (err, res) {
                         // console.log(err);
-                        console.log(res.body);
+                        //console.log(res.body);
 
                         expect(res).to.have.status(200);
                         done();                               // <= Call done to signal callback end
