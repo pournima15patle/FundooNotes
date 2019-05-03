@@ -80,7 +80,7 @@ module.exports = function(Usermodel) {
 Usermodel.addUser=function(req,res,cb){
   var abc="thjtgjh";
   res.json("It has valid token", req.user);
- cb(null,res);
+ cb(null,data);
 }
 
 Usermodel.remoteMethod('addUser', {

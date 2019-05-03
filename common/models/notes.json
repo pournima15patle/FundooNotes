@@ -18,6 +18,10 @@
       "type": "string",
       "required": true
     },
+    "color": {
+      "type": "string",
+      "required": true
+    },
     "logTime": {
       "type": "date",
       "dataType": "timestamp",
