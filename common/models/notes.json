@@ -22,6 +22,14 @@
       "type": "string",
       "required": true
     },
+    "isTrash": {
+      "type": "boolean",
+      "required": true
+    },
+    "isArchive": {
+      "type": "boolean",
+      "required": true
+    },
     "logTime": {
       "type": "date",
       "dataType": "timestamp",

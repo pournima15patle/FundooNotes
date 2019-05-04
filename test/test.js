@@ -1,11 +1,12 @@
 'use strict';
 // module.exports = async function () {
 
-    var assert = require('assert');
-    var should = require('chai').should();
+    //var assert = require('assert');
+    //var should = require('chai').should();
     var expect = require('chai').expect;
-    var getNotes = require('../common/models/notes');
-    var chai = require('chai'), chaiHttp = require('chai-http');
+    //var getNotes = require('../common/models/notes');
+    var chai = require('chai'), 
+    chaiHttp = require('chai-http');
 
     chai.use(chaiHttp);
 

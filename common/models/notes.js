@@ -33,74 +33,53 @@ module.exports = async function (Notes) {
     });
 
     /********************************************************************************************* */
-    // var moment = require('moment');
-    // Notes.reminder = function (req, res, id, time, cb) {
-    //     console.log(' ', id, time, cb);
-    //     let date = moment("2014-02-27T10:00:00").format('DD-MM-YYYY');
-    //     let dateMonthAsWord = moment("2014-02-27T10:00:00").format('DD-MMM-YYYY');
-    //     // console.log("gfghf", req);
-    //     // const currTime = Date.now();
-    //     // var date = req.time
-    //     // console.log('date :',date)
-    //     // var milliseconds = date.getTime(); 
-    //     // var rem =currTime+milliseconds;
-    //     Notes.updateAll({ _id: id }, function (err, data) {
 
-    //         // console.log(req);
-    //         if (err) {
-    //             cb(err)
-    //             //res.json(err);
-    //             //throw (err);
-    //         } else {
+    var moment = require('moment');
+    Notes.reminder = function (id, time, cb) {
+        console.log(' ', id, time, cb);
 
-    //             cb(null, data);
-    //         }
+        let date = moment(time).format('MMMM Do YYYY, h:mm:ss a');
 
-    //     });
-    //     // cb();
-    // }
+        Notes.updateAll({ _id: id }, { rem: date }, function (err, data) {
 
+            if (err) {
+                cb(err)
 
-    // Notes.remoteMethod('reminder', {
-    //     http: {
-    //         path: '/reminder',
-    //         verb: 'post'
-    //     },
-    //     accepts: [
-    //         {
-    //             arg: 'req',
-    //             type: 'Object',
-    //             http: {
-    //                 source: 'req'
-    //             }
-    //         }, {
-    //             arg: 'res',
-    //             type: 'Object',
-    //             http: {
-    //                 source: 'res'
-    //             }
-    //         },
-    //         {
-    //             arg: 'id',
-    //             type: 'string',
-    //             http: {
-    //                 source: 'form'
-    //             }
-    //         },
-    //         {
-    //             arg: 'time',
-    //             type: 'String',
-    //             http: {
-    //                 source: 'form'
-    //             }
+            } else {
 
-    //         }],
-    //     returns: {
-    //         arg: 'result',
-    //         type: 'string'
-    //     }
-    // });
+                cb(null, data);
+            }
 
+        });
+    }
+
+    Notes.remoteMethod('reminder', {
+        http: {
+            path: '/reminder',
+            verb: 'post'
+        },
+        accepts: [
+
+            {
+                arg: 'id',
+                type: 'string',
+                http: {
+                    source: 'form'
+                }
+            },
+            {
+                arg: 'time',
+                type: 'String',
+                http: {
+                    source: 'form'
+                }
+
+            }],
+        returns: {
+            arg: 'result',
+            type: 'string'
+        }
+    });
     /**************************************************************************************** */
 
     /*****************************************************************************************/
@@ -163,74 +142,83 @@ module.exports = async function (Notes) {
         returns: { arg: 'data', type: 'string' },
         http: { path: '/searchByColor', verb: 'get' }
     });
-    /**************************************************************************************** */
+  
+    
 
-    var moment = require('moment');
- 
-    Notes.reminder = function (req, res, id, time, cb) {
-        console.log(' ', id, time, cb);
+    /**********************************************TRASH***************************************** */
+    Notes.trash=function(id,isTrash,cb){
+        console.log('request :',id,isTrash,cb);
+        var responce="Mark as deleted"
+        Notes.updateAll({ _id: id }, { isTrash: isTrash }, function (err, data) {
 
-        let date = moment(time).format('DD-MM-YYYY');
-        let dateMonthAsWord = moment(time).format('DD-MMM-YYYY');
-        // console.log("gfghf", req);
-        // const currTime = Date.now();
-        // var date = req.time
-        // console.log('date :',date)
-        // var milliseconds = date.getTime(); 
-        // var rem =currTime+milliseconds;
-        Notes.updateAttributes({_id:id}, function (err, data) {
-
-            // console.log(req);
             if (err) {
                 cb(err)
-                //res.json(err);
-                //throw (err);
+
             } else {
 
-                cb(null, data);
+                cb(null, responce);
             }
 
         });
     }
-
-
-    Notes.remoteMethod('reminder', {
-        http: {
-            path: '/reminder',
-            verb: 'post'
-        },
-        accepts: [
-            {
-                arg: 'req',
-                type: 'Object',
-                http: {
-                    source: 'req'
-                }
-            }, {
-                arg: 'res',
-                type: 'Object',
-                http: {
-                    source: 'res'
-                }
-            },
-            {
-                arg: 'id',
-                type: 'string',
-                http: {
-                    source: 'form'
-                }
-            },
-            {
-                arg: 'time',
-                type: 'String',
-                http: {
-                    source: 'form'
-                }
-
-            }],
-        returns: {
-            arg: 'result',
-            type: 'string'
+    Notes.remoteMethod(
+        'trash',
+        {
+            http: { path: '/trash', verb: 'get' },
+            accepts:  [{arg: 'id', type: 'string', required: true},
+                        {arg:'isTrash',type:'boolean',required:true} ],
+            returns: { arg: 'response', type: 'string' }
         }
-    });
+    );
+
+    /**********************************************************************************/
+    Notes.archive=function(id,isArchive,cb){
+        console.log('request :',id,isArchive,cb);
+        var responce="Archive note successfully"
+        Notes.updateAll({ _id: id }, { isArchive: isArchive }, function (err, data) {
+
+            if (err) {
+                cb(err)
+
+            } else {
+
+                cb(null, responce);
+            }
+
+        });
+    }
+    Notes.remoteMethod(
+        'archive',
+        {
+            http: { path: '/archive', verb: 'get' },
+            accepts:  [{arg: 'id', type: 'string', required: true},
+                        {arg:'isArchive',type:'boolean',required:true} ],
+            returns: { arg: 'response', type: 'string' }
+        }
+    );
+/***********************************************************************************************/
+    Notes.permanantDelete = function (id, cb) {
+        console.log('req:', id)
+        Notes.destroyById(id, function (err, data) {
+            if (err) {
+                cb(err)
+            }
+            else {
+                // delete(id)
+                var response = "Successfully delete";
+                cb(null, data);
+
+
+            }
+
+        });
+    }
+    Notes.remoteMethod(
+        'permanantDelete',
+        {
+            http: { path: '/permanantDelete', verb: 'get' },
+            accepts: { arg: 'id', type: 'string', required: true },
+            returns: { arg: 'response', type: 'string' }
+        }
+    );
 };
