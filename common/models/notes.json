@@ -24,17 +24,23 @@
     },
     "isTrash": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default":"false"
     },
     "isArchive": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default":"false"
     },
     "logTime": {
       "type": "date",
       "dataType": "timestamp",
       "defaultFn": "now"
-  }
+  },
+  "reminder": {
+    "type": "date",
+    "required":false
+}
   },
   "validations": [],
   "relations": {

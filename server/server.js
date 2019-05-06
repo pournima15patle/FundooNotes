@@ -28,6 +28,7 @@ boot(app, __dirname, function(err) {
     app.start();
 });
 
+// connection to the redis db
 var redis = require('redis');
 var client = redis.createClient();
 client.on('connect', () => {
