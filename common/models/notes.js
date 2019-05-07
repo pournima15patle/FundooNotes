@@ -3,7 +3,7 @@
   * @Purpose   :To create Notes related operation set reminder, archive,trash ,find 
   *             notes by title,discription,color etc.
   * @author    : pournima15patle
-  * @version   : 1.0
+  * @version   : loopback 3.0
   * @since     : 25-04-2019
   ****************************************************************************************/
 // 'use strict';
@@ -45,7 +45,7 @@ module.exports = async function (Notes) {
      * @Purpose : To create the api for setting the reminder for specified id of notes
     **********************************************************************************************/
 
-    var moment = require('moment');
+    //var moment = require('moment');
     Notes.reminderNotes = function (id, reminder, cb) {
         console.log(' ', id, reminder, cb);
 
@@ -242,10 +242,18 @@ module.exports = async function (Notes) {
                 returns: { arg: 'response', type: 'string' }
             }
         );
-    Notes.searchNotes = function (result, cb) {
-       
 
-        Notes.find({where: {or: [{title: result}, {discription: result}]}}, function (err, data) { /* ... */
+        /**********************************************************************************
+         * @Purpose : To search the notes by using title and discription.
+         **********************************************************************************/
+    Notes.searchNotes = function (result, cb) {
+      
+       console.log("result for search: ", result);
+       
+        var pattern = new RegExp('.*'+result+'.*', "i"); /* case-insensitive RegExp search */
+       
+        Notes.find({ where: {or: [{title: { like: pattern}}, {discription: { like: pattern} }]} },function (err, data) {
+            
             if (err) {
                 cb(err);
             } else {
@@ -258,6 +266,6 @@ module.exports = async function (Notes) {
     Notes.remoteMethod('searchNotes', {
         accepts: { arg: 'search', type: 'string', required: true },
         returns: { arg: 'data', type: 'string' },
-        http: { path: '/searchNotes', verb: 'post' }
+        http: { path: '/searchNotes', verb: 'get' }
     });
 };
