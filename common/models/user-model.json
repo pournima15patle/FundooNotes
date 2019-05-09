@@ -25,6 +25,11 @@
       "type": "hasMany",
       "model": "notes",
       "foreignKey": ""
+    },
+    "labels": {
+      "type": "hasMany",
+      "model": "label",
+      "foreignKey": ""
     }
   },
   "acls": [

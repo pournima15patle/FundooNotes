@@ -1,0 +1,29 @@
+{
+  "name": "label",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "labelName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "userModel": {
+      "type": "belongsTo",
+      "model": "userModel",
+      "foreignKey": ""
+    },
+    "notes": {
+      "type": "belongsTo",
+      "model": "notes",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -25,28 +25,37 @@
     "isTrash": {
       "type": "boolean",
       "required": true,
-      "default":"false"
+      "default": "false"
     },
     "isArchive": {
       "type": "boolean",
       "required": true,
-      "default":"false"
+      "default": "false"
     },
     "logTime": {
       "type": "date",
       "dataType": "timestamp",
       "defaultFn": "now"
-  },
-  "reminder": {
-    "type": "date",
-    "required":false
-}
+    },
+    "reminder": {
+      "type": "date",
+      "required": false
+    },
+    "label": {
+      "type": "object",
+      "required": false
+    }
   },
   "validations": [],
   "relations": {
     "userModel": {
       "type": "belongsTo",
       "model": "userModel",
+      "foreignKey": ""
+    },
+    "labels": {
+      "type": "hasMany",
+      "model": "label",
       "foreignKey": ""
     }
   },

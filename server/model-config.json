@@ -50,5 +50,9 @@
   "sample": {
     "dataSource": "db",
     "public": true
+  },
+  "label": {
+    "dataSource": "db",
+    "public": true
   }
 }

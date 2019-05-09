@@ -26,7 +26,7 @@ module.exports = async function (Notes) {
                 }
             }
         }, function (err, data) {
-            console.log(data);
+            // console.log(data);
             if (err) {
                 cb(err);
             } else {
@@ -36,8 +36,8 @@ module.exports = async function (Notes) {
         });
     }
     Notes.remoteMethod('getNotes', {
-        accepts: { arg: 'id', type: 'string', required: true },
-        returns: { arg: 'data', type: 'array' },
+        accepts: { arg: 'id', type: 'string', required: false },
+        returns: { arg: 'data', type: 'string' },
         http: { path: '/getNotes', verb: 'get' }
     });
 
@@ -218,42 +218,42 @@ module.exports = async function (Notes) {
     /**********************************************************************************************
      * @Purpose : To create the api for Permanant delete and delete the notes from db
      **********************************************************************************************/
-        Notes.permanantDelete = function (id, cb) {
-            console.log('req:', id)
-            Notes.destroyById(id, function (err, data) {
-                if (err) {
-                    cb(err)
-                }
-                else {
-                    // delete(id)
-                    var response = "Successfully delete";
-                    cb(null, data);
-
-
-                }
-
-            });
-        }
-        Notes.remoteMethod(
-            'permanantDelete',
-            {
-                http: { path: '/permanantDelete', verb: 'get' },
-                accepts: { arg: 'id', type: 'string', required: true },
-                returns: { arg: 'response', type: 'string' }
+    Notes.permanantDelete = function (id, cb) {
+        console.log('req:', id)
+        Notes.destroyById(id, function (err, data) {
+            if (err) {
+                cb(err)
             }
-        );
+            else {
+                // delete(id)
+                var response = "Successfully delete";
+                cb(null, data);
 
-        /**********************************************************************************
-         * @Purpose : To search the notes by using title and discription.
-         **********************************************************************************/
+
+            }
+
+        });
+    }
+    Notes.remoteMethod(
+        'permanantDelete',
+        {
+            http: { path: '/permanantDelete', verb: 'get' },
+            accepts: { arg: 'id', type: 'string', required: true },
+            returns: { arg: 'response', type: 'string' }
+        }
+    );
+
+    /**********************************************************************************
+     * @Purpose : To search the notes by using title and discription.
+     **********************************************************************************/
     Notes.searchNotes = function (result, cb) {
-      
-       console.log("result for search: ", result);
-       
-        var pattern = new RegExp('.*'+result+'.*', "i"); /* case-insensitive RegExp search */
-       
-        Notes.find({ where: {or: [{title: { like: pattern}}, {discription: { like: pattern} }]} },function (err, data) {
-            
+
+        console.log("result for search: ", result);
+
+        var pattern = new RegExp('.*' + result + '.*', "i"); /* case-insensitive RegExp search */
+
+        Notes.find({ where: { or: [{ title: { like: pattern } }, { discription: { like: pattern } }] } }, function (err, data) {
+
             if (err) {
                 cb(err);
             } else {
@@ -268,4 +268,40 @@ module.exports = async function (Notes) {
         returns: { arg: 'data', type: 'string' },
         http: { path: '/searchNotes', verb: 'get' }
     });
+
+    /******************************************************************************
+     * 
+     ******************************************************************************/
+    var redis = require('redis');
+    var client = redis.createClient();
+
+    // Notes.afterRemote('find', function (ctx, abc, next) {
+    //    console.log('Notes are :', ctx.result);
+
+    //     client.set('note', JSON.stringify(ctx.result), redis.print);
+
+    //     client.get('note', (err, reply) => {
+    //         if (err) {
+    //             throw err;
+    //         }
+    //         console.log('Result from redis:', reply);
+    //     });
+    //     next();
+    // });
+
+
+    Notes.afterRemote('find', function (ctx, abc, next) {
+        console.log('Notes are :', ctx.result);
+ 
+         client.set('note', JSON.stringify(ctx.result), redis.print,cb);
+         
+         client.get('note', (err, reply) => {
+             if (err) {
+                 throw err;
+             }
+             console.log('Result from redis:', reply);
+         });
+         next();
+     });
+
 };
