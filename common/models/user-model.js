@@ -10,7 +10,7 @@
   var config = require('../../server/config.json');
   var helper=require('./helper')
 /*****************************************************************
- * @Purpose: To disable the api which is conflicted
+ * @Purpose : To disable the api which is conflicted
  *****************************************************************/
  
    helper.disableAllMethods(Usermodel, ["create", "login", "setPassword", "resetPassword"]);

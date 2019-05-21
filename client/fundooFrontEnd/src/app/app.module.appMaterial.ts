@@ -6,9 +6,8 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { OverlayModule } from '@angular/cdk/overlay';
-//import {MatCardModule} from '@angular/material/card';
-// import {MatIconModule} from '@angular/material/icon';
-import {MatIconModule} from '@angular/material';
+
+//import {MatIconModule} from '@angular/material';
 
 
 import 'hammerjs';
@@ -26,7 +25,7 @@ import {
     MatDividerModule,
     MatExpansionModule,
     MatGridListModule,
-    // MatIconModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,

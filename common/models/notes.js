@@ -91,74 +91,7 @@ module.exports = async function (Notes) {
             type: 'string'
         }
     });
-    /****************************************************************************************
-     * @Purpose : To create the api for search the notes by title
-     ***************************************************************************************/
-    // Notes.searchByTitle = function (result, cb) {
-    //     console.log("result:-", result);
-
-    //     Notes.find({ where: { title: result } }, function (err, data) { /* ... */
-    //         if (err) {
-    //             cb(err);
-    //         } else {
-    //             cb(null, data);
-    //         }
-    //     });
-
-
-    // }
-    // Notes.remoteMethod('searchByTitle', {
-    //     accepts: { arg: 'title', type: 'string', required: true },
-    //     returns: { arg: 'data', type: 'string' },
-    //     http: { path: '/searchByTitle', verb: 'get' }
-    // });
-
-    /*****************************************************************************************
-     * @Purpose : To create the api for search the notes by Discription
-     ******************************************************************************************/
-    // Notes.searchByDiscription = function (result, cb) {
-    //     console.log("result:-", result);
-
-    //     Notes.find({ where: { discription: result } }, function (err, data) { /* ... */
-    //         if (err) {
-    //             cb(err);
-    //         } else {
-    //             cb(null, data);
-    //         }
-    //     });
-
-
-    // }
-    // Notes.remoteMethod('searchByDiscription', {
-    //     accepts: { arg: 'discription', type: 'string', required: true },
-    //     returns: { arg: 'data', type: 'string' },
-    //     http: { path: '/searchByDiscription', verb: 'get' }
-    // });
-
-    /**************************************************************************************
-     * @Purpose : To create the api for search the notes by color
-     ***************************************************************************************/
-
-    // Notes.searchByColor = function (result, cb) {
-    //     console.log("result:-", result);
-
-    //     Notes.find({ where: { color: result } }, function (err, data) { /* ... */
-    //         if (err) {
-    //             cb(err);
-    //         } else {
-    //             cb(null, data);
-    //         }
-    //     });
-
-
-    // }
-    // Notes.remoteMethod('searchByColor', {
-    //     accepts: { arg: 'color', type: 'string', required: true },
-    //     returns: { arg: 'data', type: 'string' },
-    //     http: { path: '/searchByColor', verb: 'get' }
-    // });
-
-
+    
 
     /**********************************************TRASH*****************************************
      * @Purpose : To create the api for trash and setting the flag in notes. 
@@ -293,9 +226,9 @@ module.exports = async function (Notes) {
     Notes.afterRemote('find', function (ctx, abc, next) {
         console.log('Notes are :', ctx.result);
  
-         client.set('note', JSON.stringify(ctx.result), redis.print,cb);
+         client.set('note' + ctx.result.id, JSON.stringify(ctx.result), redis.print,cb);
          
-         client.get('note', (err, reply) => {
+         client.get('note' + ctx.result.id, (err, reply) => {
              if (err) {
                  throw err;
              }
