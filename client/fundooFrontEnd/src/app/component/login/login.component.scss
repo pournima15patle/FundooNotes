@@ -37,27 +37,33 @@
 .acc{
     text-align: center;
 }
-.common{
-    width: 70%;
-}
+
 .email{
-    width: 70%;
-   
-    //height: 200px;
+    width: 97%;
  } 
  .password{
-  
-    width: 70%;
-   
-
+    width: 97%;
  }
 .login{
     color: rgb(0, 102, 255);
 }
+.lable1{
+    color: rgb(0, 102, 255);
+    margin-left: 70px;
+}
+
+.lable{
+    color: rgb(0, 102, 255);
+    margin-right: 35px;
+}
 .button1{
     background-color: rgb(0, 102, 255);
     color: white;
-    margin-right: 300px;
     border-radius: 7%;
-    margin-right: 300px;
+    margin-left: 66px;
+}
+
+/deep/.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 1em 0 1em 0;
+    width: 325px;
 }

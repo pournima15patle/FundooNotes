@@ -12,7 +12,7 @@
     },
     "author": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "discription": {
       "type": "string",
@@ -20,16 +20,16 @@
     },
     "color": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "isTrash": {
       "type": "boolean",
-      "required": true,
+      "required": false,
       "default": "false"
     },
     "isArchive": {
       "type": "boolean",
-      "required": true,
+      "required": false,
       "default": "false"
     },
     "logTime": {

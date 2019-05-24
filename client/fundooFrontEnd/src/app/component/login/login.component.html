@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <mat-card class="card" fxFlex="40" >
     
         <mat-card-title class="fundoo">
@@ -14,40 +14,97 @@
             <span class="o">e</span>
             <span class="oo">s</span>
           </mat-card-title> 
-          <!-- <mat-card-header> -->
+          <mat-card-header>
             <div class="acc" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="-4%">
               <h2>Sign In</h2>
               <h3>with your fundoo Account</h3>
            </div>  
-           <!-- </mat-card-header> -->
+           </mat-card-header>
     
-      <div  fxLayout="column" fxLayoutAlign="space-evenly center" class="common">
+      <div  fxLayout="column" fxLayoutAlign="space-evenly center">
           <div >
         <mat-form-field fxFlex.xs="100" appearance="outline" class="email">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="enter first name">
+          <input matInput placeholder="enter your email">
           <mat-hint>Email is required</mat-hint>
         </mat-form-field>
       </div>
     
-      <div>
-        <mat-form-field  fxFlex.xs="100" appearance="outline" class="password">
+      <div >
+        <mat-form-field  fxFlex.xs="100" appearance="outline"  class="password">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="enter last name"> 
+          <input matInput placeholder="enter password"> 
           <mat-hint>password is required</mat-hint>
         </mat-form-field>
+        <div>
+        <mat-label style="margin-left: 63%;">forgot password</mat-label>
+        </div>
+        
       </div>
     </div>
     
-     
-      <div fxLayout="row">
-          <div class="login">
-            <mat-label><br>forgot password</mat-label>
+     <div>
+        <div >
+            <mat-label><br>create Account</mat-label>
           </div>
-          <div class="button1">
-            <button mat-button>Login</button>
-          </div>
-        </div>
-        
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5%" fxLayout >
+              <div class="button1">
+                <button mat-button>Login</button>
+              </div>
+     </div>
+
     </mat-card>
+    </div> -->
+
+<div>
+  <mat-card class="card" fxFlex="40">
+
+    <mat-card-title class="fundoo">
+      <span class="f">F</span>
+      <span class="u">u</span>
+      <span class="n">n</span>
+      <span class="d">d</span>
+      <span class="o">o</span>
+      <span class="oo">o</span>
+    </mat-card-title>
+
+    <mat-card-subtitle>
+      <div class="acc" fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="-4%">
+        <h2>Sign In</h2>
+        <h3>with your fundoo Account</h3>
+      </div>
+    </mat-card-subtitle>
+
+    <div fxLayout="column" fxLayoutAlign="space-evenly center">
+      <div>
+        <mat-form-field fxFlex.xs="100" appearance="outline" class="email">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="enter your email" [(formControl)]="email">
+          <mat-hint>Email is required</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field fxFlex.xs="100" appearance="outline" class="password">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="enter password" [(formControl)]="password">
+          <mat-hint>password is required</mat-hint>
+          <!-- <mat-icon matSuffix>visibility_off</mat-icon> -->
+        </mat-form-field>
+      </div>
+      
     </div>
+    <mat-label class="lable1">forgot password</mat-label>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <div class="lable">
+          <mat-label>Create Account</mat-label>
+        </div>
+       
+        <div class="button1">
+          <button mat-button (click)="next()">Sign In</button>
+        </div>
+    </div>
+    
+  </mat-card>
+</div>

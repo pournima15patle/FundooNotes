@@ -1,0 +1,47 @@
+<div>
+  <div *ngIf="flag === true"
+  class="body"
+  (click)="reverseFlag()"
+  fxLayout="row"
+  fxLayoutAlign="space-around start"
+  fxFlex="100">
+<mat-card class="card1">
+ <div>
+   <input matInput  placeholder="Take a note...">
+   <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
+      <img src="../../../assets/img/outline-check_box-24px.svg" />
+    </div>
+    <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New note with drawing">
+        <img src="../../../assets/img/outline-brush-24px.svg" />
+    </div>
+    <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New note with image">
+        <img src="../../../assets/img/outline-image-24px.svg" />
+    </div> 
+ </div>
+</mat-card> 
+</div>
+
+<div *ngIf="flag === false"
+     fxLayout="row"
+     fxLayoutAlign="space-around start"
+     fxFlex="100">
+    <mat-card class="card2">
+      <div fxLayout="column" fxLayoutGap="5%">
+      <div>
+        <input matInput  placeholder="Title" [(formControl)]="title">
+        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
+            <img src="../../../assets/img/unpinbar.svg" />
+          </div>
+      </div>    
+      <div >
+          <input matInput  placeholder="Take a note..." [(formControl)]="discription">
+      </div>
+      <div>
+        <app-icon></app-icon><div>
+            <button mat-raised-button (click)="createnote()"(click)="refresh()" matTooltip="Refresh">Close</button>
+          </div>
+      </div>
+    </div>
+    </mat-card>
+</div>
+</div>

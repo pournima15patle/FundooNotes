@@ -20,7 +20,7 @@ module.exports = async function (Notes) {
                     include: { // include notes for the users
                         relation: 'notes',
                         // scope: {
-                        //     where: { userId: 'data.id' } //{ userId: '$state.params.id' }  only select notes with this id 
+                        // where: { userId: 'data.id' } //{ userId: '$state.params.id' }  only select notes with this id 
                         // }
                     }
                 }

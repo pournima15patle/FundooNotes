@@ -1,74 +1,77 @@
 <div>
-<mat-card class="card" fxFlex="40" >
+  <mat-card class="card" fxFlex="40">
 
     <mat-card-title class="fundoo">
-        <span class="f">F</span>
-        <span class="u">u</span>
-        <span class="n">n</span>
-        <span class="d">d</span>
-        <span class="o">o</span>
-        <span class="oo">o</span>
-      </mat-card-title>
-      <mat-card-header>
-        <div class="acc">
-          <mat-card-title>Create your Fundoo Account</mat-card-title>
-       </div>  
-      </mat-card-header>
+      <span class="f">F</span>
+      <span class="u">u</span>
+      <span class="n">n</span>
+      <span class="d">d</span>
+      <span class="o">o</span>
+      <span class="oo">o</span>
+    </mat-card-title>
 
-  <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap="4%">
+    <mat-card-subtitle>
+      <div class="acc">
+        <mat-card-title>Create Your Fundoo Account</mat-card-title>
+      </div>
+    </mat-card-subtitle>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="4%">
       <div>
-    <mat-form-field fxFlex.xs="100" appearance="outline" class="firstName">
-      <mat-label>firstName</mat-label>
-      <input matInput placeholder="enter first name">
-      <mat-hint>first name is required</mat-hint>
-    </mat-form-field>
-  </div>
+        <mat-form-field fxFlex.xs="100" appearance="outline" class="firstName">
+          <mat-label>firstName</mat-label>
+          <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error> 
+          <input matInput placeholder="enter first name" [(formControl)]="firstName">
+          <mat-hint>first name is required</mat-hint>
+        </mat-form-field>
+      </div>
 
-  
-    <mat-form-field appearance="outline" class="lastName">
-      <mat-label>lastName</mat-label>
-      <input matInput placeholder="enter last name"> 
-      <mat-hint>last name is required</mat-hint>
-    </mat-form-field>
-  
-</div>
-<div>
-  
-    <mat-form-field appearance="outline" class="email">
-      <mat-label aria-autocomplete="off" >Username/Email</mat-label>
-      <input matInput placeholder="enter your email address" >
-      <mat-hint>email is required</mat-hint>
-    </mat-form-field>
- 
-</div>
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5%">
-    <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput placeholder="enter your password">
-      
-    </mat-form-field>
-  
-  
-    <mat-form-field appearance="outline">
-      <mat-label>Confirm Password</mat-label>
-      <input matInput placeholder="enter your password">
-    </mat-form-field>
-    <!-- <i class="material-icons">visibility_off </i> -->
-    <mat-icon class="icon">visibility_off </mat-icon> 
+
+      <mat-form-field fxFlex.xs="100" appearance="outline" class="lastName">
+        <mat-label>lastName</mat-label>
+        <mat-error *ngIf='lastName.Invalid'>{{getNameError()}}</mat-error> 
+        <input matInput placeholder="enter last name" [(formControl)]="lastName">
+        <mat-hint>last name is required</mat-hint>
+      </mat-form-field>
+
     </div>
     <div>
-    <mat-hint>Use 8 or more characters with a mix<br> of letters, numbers & symbols </mat-hint>
-  </div>
-    <div fxLayout="row" >
+
+      <mat-form-field fxFlex.xs="100" appearance="outline" class="email">
+        <mat-label aria-autocomplete="off">Username/Email</mat-label>
+        <input matInput placeholder="enter your email address" [(formControl)]="email">
+        <mat-hint>email is required</mat-hint>
+      </mat-form-field>
+
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5%">
+      <mat-form-field fxFlex.xs="100" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="enter your password" [(formControl)]="password">
+
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput placeholder="enter your password" [(formControl)]="password">
+      </mat-form-field>
+      <!-- <i class="material-icons">visibility_off </i> -->
+      <mat-icon class="icon">visibility_off </mat-icon>
+    </div>
+    <div>
+      <mat-hint>Use 8 or more characters with a mix<br> of letters, numbers & symbols </mat-hint>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
       <div class="signIn" style="margin-right: 160px;">
         <mat-label><br>Sign in instead</mat-label>
       </div>
       <div class="button1">
-        <button mat-button>Create</button>
+        <button mat-button (click)="next()">Create</button>
       </div>
     </div>
-    
-</mat-card>
+
+  </mat-card>
 </div>
 <!-- <html>
 <div fxLayoutAlign="space-around center" fxFlex="100">
@@ -123,3 +126,23 @@ emailFormControl.hasError('email') &&
           <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password"
             autocomplete="off" requried />
           <mat-hint fxShow.sm="false" fxShow.xs="false" fxShow="true"> -->
+<!-- 
+              <div class="register" fxLayout="row" fxLayoutGap="5%" fxLayout.xs="column">
+
+                  <mat-form-field appearance="outline" style="height:53px">
+                  
+                  <mat-label>First Name</mat-label>
+                  <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error> 
+                  <input matInput placeholder="First Name" [(formControl)]="firstName">
+                  <mat-hint>Enter first name is required</mat-hint>
+                  
+                  </mat-form-field>
+                  <div fxLayoutGap="5%" fxLayout.xs="column">
+                  <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error> 
+                  <input matInput placeholder="Last Name" [(formControl)]="lastName">
+                  <mat-hint>Enter last name is required</mat-hint>
+                  </mat-form-field>
+                  </div>
+                  </div> -->

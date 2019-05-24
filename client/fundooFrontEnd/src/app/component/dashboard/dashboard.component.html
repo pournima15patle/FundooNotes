@@ -1,0 +1,69 @@
+<div>
+<mat-toolbar >
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon matTooltip="Main Menu">menu</mat-icon>
+  </button>
+
+  <div fxFlex="2">
+    <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="Welcome to Fundoo Notes">
+      <img id="google-keep-logo" src="../../../assets/img/keep.png" />
+
+      <h3 class="example-app-name" fxLayoutAlign="center center">
+        <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="end center">
+          <span>{{message}}</span>
+        </mat-card-title>
+      </h3>
+    </div>
+  </div>
+
+  <!-- <div class="right">
+      <form id="search">
+         
+        <input #search type="search" placeholder="Search" [ngClass]="{'filled':filled}" 
+             (click)="filled=true" (blur)="filled=search.value?true:false"> 
+      </form>
+    </div> -->
+
+  <!-- ***************************************************************************** -->  
+  <div fxFlex="80" fxLayoutAlign="end start">
+    <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
+      <button mat-icon-button class="search-button">
+        <mat-icon matTooltip="Search">search</mat-icon>
+      </button>
+
+      <input fxFlex="90" [(ngModel)]="search" (keyup)="lookup()" matInput placeholder="Search" [style.fontSize.px]="16"
+        class="search-window" autocomplete="off" />
+    </mat-form-field>
+  </div>
+
+  <div fxFlex="25">
+    <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+<!-- ***************************************************************************** -->
+  <!-- <button mat-icon-button color="basic" id="grid" fxHide.xs>
+    <mat-icon>
+      <img *ngIf="gridView" (click)="changeview()" matTooltip="List view"
+        src="../../../assets/images/outline-view_agenda-24px.svg" />
+      <img isClicked *ngIf="!gridView" (click)="changeview()" matTooltip="Grid view"
+        src="../../../assets/images/outline-border_all-24px.svg" /></mat-icon>
+  </button> -->
+
+
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+    <mat-sidenav #sidenav mode="side" >
+     
+    <mat-nav-list>
+      <a mat-list-item >Notes</a>
+    </mat-nav-list>  
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <app-add-note></app-add-note>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+</div>
+
+

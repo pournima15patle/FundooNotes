@@ -20,8 +20,8 @@
    *****************************************************************************/
   Usermodel.on('resetPasswordRequest', function(info) {
     /*taking the host and port number in url variable */
-    var url = 'http://' + config.host + ':' + config.port + '/reset-password';
-    var html = 'Click <a href="' + url + '?access_token=' +
+    var url = 'http://localhost:4200/resetPassword'
+    var html = 'Click <a href="' + url + '/' +
             info.accessToken.id + '">here</a> to reset your password';
 
     // sending email by send method
