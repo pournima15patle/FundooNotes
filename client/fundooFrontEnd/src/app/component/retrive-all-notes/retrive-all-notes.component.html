@@ -1,0 +1,29 @@
+
+<div *ngFor='let item of notes' fxLayoutAlign="center center" fxLayout.xs="column" fxFlex="30"> 
+
+
+
+  <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:10px;"
+  fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="45" fxFlexOffset.xl="10" 
+   mat-raised-button (click) ="openDialogbox()"   >
+  
+  
+  <div fxLayout="column" fxLayoutAlign="start start" >
+  <div class="title" >
+  {{item.title}}
+  </div>
+  
+  <div class="discp">
+  {{item.discription}}
+  </div>
+  </div>
+  
+  
+  
+  
+  <div fxFlex="100">
+  
+  </div>
+  
+  </mat-card>
+  </div>

@@ -20,7 +20,10 @@ import { ReminderComponent } from './component/reminder/reminder.component';
 import { TrashComponent } from './component/trash/trash.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { IconComponent } from './component/icon/icon.component';
-
+import { RetriveAllNotesComponent } from './component/retrive-all-notes/retrive-all-notes.component';
+import { EditCardComponent } from './component/edit-card/edit-card.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { IconComponent } from './component/icon/icon.component';
     ArchiveComponent,
     ReminderComponent,
     TrashComponent,
-    IconComponent
+    IconComponent,
+    RetriveAllNotesComponent,
+    EditCardComponent,
+    DialogBoxComponent
     
   ],
   imports: [
@@ -44,10 +50,11 @@ import { IconComponent } from './component/icon/icon.component';
     AppMaterial,
     BrowserAnimationsModule,
     HttpClientModule,MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,MatDialogModule
    
   ],
   providers: [HttpServiceService,UserService],
+  entryComponents:[DialogBoxComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

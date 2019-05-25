@@ -15,4 +15,21 @@ export class NotesService {
     }
     return this.http.postaddNote(data)
   }
+  
+  getNote(obj){
+    const token = localStorage.getItem('access_token');
+    const data={
+      tkn :token,
+      body:obj
+    }
+    return this.http.postgetNote(data)
+  }
+
+  updateNote(obj) {
+    const data = {
+      
+      body: obj
+    }
+    return this.http.postUpdateNote(data)
+  }
 }

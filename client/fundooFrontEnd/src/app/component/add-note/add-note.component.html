@@ -33,10 +33,10 @@
             <img src="../../../assets/img/unpinbar.svg" />
           </div>
       </div>    
-      <div >
+      <div>
           <input matInput  placeholder="Take a note..." [(formControl)]="discription">
       </div>
-      <div>
+      <div fxLayout="row" fxLayoutGap="33%">
         <app-icon></app-icon><div>
             <button mat-raised-button (click)="createnote()"(click)="refresh()" matTooltip="Refresh">Close</button>
           </div>

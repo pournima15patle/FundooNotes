@@ -1,0 +1,23 @@
+<div 
+     fxLayout="row"
+     fxLayoutAlign="space-around start"
+     fxFlex="100">
+   
+      <div fxLayout="column" fxLayoutGap="5%">
+      <div>
+        <input matInput  placeholder="Title" [(formControl)]="title">
+        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
+            <img src="../../../assets/img/unpinbar.svg" />
+          </div>
+      </div>    
+      <div>
+          <input matInput  placeholder="Take a note..." [(formControl)]="discription">
+      </div>
+      <div fxLayout="row" fxLayoutGap="8%">
+        <app-icon></app-icon><div>
+            <button mat-raised-button (click)="updateNote()"(click)="onNoClick()" matTooltip="close">Close</button>
+          </div>
+      </div>
+    </div>
+  
+</div>
