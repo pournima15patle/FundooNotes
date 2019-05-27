@@ -9,6 +9,7 @@ export class HttpServiceService {
   
   baseUrl: any = environment.baseUrl;
   baseUrl2: any=environment.baseUrl2;
+  baseUrl3: any=environment.baseUrl3;
   constructor(private http:HttpClient) { }
 
   postRegister(options){
@@ -37,7 +38,6 @@ export class HttpServiceService {
     console.log("options for reset" , options);
     
     return this.http.post(this.baseUrl+'reset-password', options.body,httpOptions);
-   
     
   }
 
@@ -76,6 +76,19 @@ export class HttpServiceService {
     console.log("tokens: ", localStorage.getItem('access_token'));
     
     console.log("options for reset" , options);
-    return this.http.post(this.baseUrl2+'update', options.body,httpOptions);
+    return this.http.post(this.baseUrl2+'editNotes', options.body,httpOptions);
+  }
+  postCreateLabel(options){
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token')
+      })
+    };
+
+    console.log("tokens: ", localStorage.getItem('access_token'));
+    console.log("this is api",this.baseUrl3)
+    
+    console.log("thi is http post",this.baseUrl3, options.body,httpOptions)
+    return this.http.post(this.baseUrl3, options.body,httpOptions);
   }
 }

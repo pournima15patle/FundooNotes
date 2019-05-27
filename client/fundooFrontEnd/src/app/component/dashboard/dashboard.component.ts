@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { EditLabelComponent } from '../edit-label/edit-label.component';
 
 
 @Component({
@@ -8,7 +10,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 message:string="FundooNotes"
-  constructor() { }
+  constructor(
+    private dialog:MatDialog
+  ) { }
 
   ngOnInit() {
   }
@@ -20,6 +24,19 @@ message:string="FundooNotes"
   
   changeview(){
 
+  }
+  labelDialog(){
+   
+    const dialogRef = this.dialog.open(EditLabelComponent, {
+      
+      width: '300px',
+      data: {}
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The laabel dialog was closed',result);
+      
+    });
   }
   
 }

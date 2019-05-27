@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private user:UserService) { }
+  constructor(private user:UserService,private snackBar: MatSnackBar) { }
 
   data: any;
   model: any;
@@ -20,7 +21,23 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+  getEmailError(){
+    return this.email.hasError('required')?'email cannot be empty':
+    this.email.hasError('pattern')?'invalid email':''
+    }
+    getPassError(){
+    return this.password.hasError('required')?'password cannot be empty':
+    this.password.hasError('pattern')?'invalid password':''
+    }
+    getNameError(){
+    return this.firstName.hasError('required')?'field cannot be empty':
+    this.firstName.hasError('pattern')?'invalid name':''
+    }
+    getLastNameError(){
+      return this.firstName.hasError('required')?'field cannot be empty':
+      this.lastName.hasError('pattern')?'invalid last name':''
+    }
+
  next(){
    console.log("name",this.firstName.value);
    
@@ -37,11 +54,12 @@ export class RegisterComponent implements OnInit {
      this.user.register(this.model).subscribe(
        data => {
          console.log("data after register: ", data);
+         this.snackBar.open('Register successfully' ,'EndNow',{duration: 3000});
          
        },
        error => {
         console.log("data after register: ", error);
-
+        this.snackBar.open('Register failed' ,'EndNow',{duration: 3000});
        }
      )
 

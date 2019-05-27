@@ -25,11 +25,18 @@ export class NotesService {
     return this.http.postgetNote(data)
   }
 
-  updateNote(obj) {
-    const data = {
+  updateNote(requestBody) {
+    const reqbody = {
       
-      body: obj
+      body: requestBody
     }
-    return this.http.postUpdateNote(data)
+    return this.http.postUpdateNote(reqbody)
+  }
+  createLabelIn(requestBody){
+    const reqbody = {
+      
+      body: requestBody
+    }
+    return this.http.postCreateLabel(reqbody)
   }
 }

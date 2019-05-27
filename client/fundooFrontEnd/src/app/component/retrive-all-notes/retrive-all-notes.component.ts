@@ -23,26 +23,30 @@ export class RetriveAllNotesComponent implements OnInit {
  retriveCards(){
   this.note.getNote(this.notes).subscribe(
     data => {
-      console.log("data after register: ", data);
+      console.log("data of getAllNotes: ", data);
       this.notes= data['data']
     },
     error => {
-     console.log("data after register: ", error);
+     console.log("error of getAllNotes: ", error);
 
     }
   )
  }
+
+ 
 title:any;
 discription:any;
-openDialogbox(): void {
+openDialogbox(item): void {
+console.log("this is item",item)
   const dialogRef = this.dialog.open(DialogBoxComponent, {
-    width: '450px',
-    data: {title: this.title, discription: this.discription}
+    
+    width: '500px',
+    data: { noteData : item}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
-    this.title = result;
+    this.notes = result;
   });
 }
 

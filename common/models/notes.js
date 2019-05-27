@@ -91,7 +91,7 @@ module.exports = async function (Notes) {
             type: 'string'
         }
     });
-    
+
 
     /**********************************************TRASH*****************************************
      * @Purpose : To create the api for trash and setting the flag in notes. 
@@ -208,33 +208,87 @@ module.exports = async function (Notes) {
     var redis = require('redis');
     var client = redis.createClient();
 
-    // Notes.afterRemote('find', function (ctx, abc, next) {
-    //    console.log('Notes are :', ctx.result);
-
-    //     client.set('note', JSON.stringify(ctx.result), redis.print);
-
-    //     client.get('note', (err, reply) => {
-    //         if (err) {
-    //             throw err;
-    //         }
-    //         console.log('Result from redis:', reply);
-    //     });
-    //     next();
-    // });
-
-
     Notes.afterRemote('find', function (ctx, abc, next) {
         console.log('Notes are :', ctx.result);
- 
-         client.set('note' + ctx.result.id, JSON.stringify(ctx.result), redis.print,cb);
-         
-         client.get('note' + ctx.result.id, (err, reply) => {
-             if (err) {
-                 throw err;
-             }
-             console.log('Result from redis:', reply);
-         });
-         next();
-     });
+
+        client.set('note' + ctx.result.id, JSON.stringify(ctx.result), redis.print, cb);
+
+        client.get('note' + ctx.result.id, (err, reply) => {
+            if (err) {
+                throw err;
+            }
+            console.log('Result from redis:', reply);
+        });
+        next();
+    });
+
+
+    // Notes.editNotes = function (id, title, discription, cb) {
+
+    //     Notes.updateAll({ _id: id }, { title: title }, { discription: discription }, function (err, data) {
+
+    //         if (err) {
+    //             cb(err);
+    //         } else {
+    //             cb(null, data);
+    //         }
+    //     });
+    // }
+
+    // Notes.remoteMethod(
+    //     'editNotes',
+    //     {
+    //         http: { path: '/editNotes', verb: 'post' },
+    //         accepts: [{ arg: 'id', type: 'string', required: true },
+    //         { arg: 'title', type: 'string', required: false },
+    //         { arg: 'discription', type: 'string', required: false }],
+    //         returns: { arg: 'response', type: 'object' }
+    //     }
+    // );
+
+    Notes.editNotes = function (data, req, cb) {
+        var info = {
+            'noteId': data.noteId,
+            'title': data.title,
+            'description': data.description
+        }
+        if (req.currentUser != null && data.noteId == null && data.title == null) {
+
+
+            console.log("Enter details is not valid");
+            cb(null, "Enter details is not valid")
+        }
+        else {
+            Notes.updateAll({ _id: info.noteId }, { title: info.title }, { description: info.description }, function (err, data) {
+                if (err) {
+                    cb(err)
+
+                } else {
+
+                    cb(null, data);
+                }
+            });
+        }
+    }
+
+    Notes.remoteMethod('editNotes', {
+        http: {
+            path: '/editNotes',
+            verb: 'post'
+        },
+        'accepts': [
+
+            { arg: 'data', type: 'object', http: { source: 'body' }, "description": 'JSON object in body ', "required": true },
+            { "arg": 'req', "type": 'object', "http": { "source": 'req' } }
+
+        ],
+        returns: {
+            arg: 'result',
+            type: 'string'
+        }
+    });
 
 };
+// accept: [{ arg: 'data', type: 'object', http: { source: 'body' },
+//  "description": 'noteId type :string,isTrash type:boolean in body ', "required": true },
+// { "arg": 'req', "type": 'object', "http": { "source": 'req' } }

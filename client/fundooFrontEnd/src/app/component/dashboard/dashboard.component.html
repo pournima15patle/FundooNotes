@@ -42,6 +42,7 @@
     </button>
   </div>
 <!-- ***************************************************************************** -->
+
   <!-- <button mat-icon-button color="basic" id="grid" fxHide.xs>
     <mat-icon>
       <img *ngIf="gridView" (click)="changeview()" matTooltip="List view"
@@ -56,45 +57,71 @@
 <mat-sidenav-container class="container" style="height:100vh;">
     <mat-sidenav #sidenav mode="side" >
      
-    <mat-nav-list style="width:10%">
-      <div fxLayout="row" fxLayoutGap="50px">
+
+     
+    <mat-nav-list >
+      <button mat-button  >
+       <div fxLayout="row" fxLayoutGap="30px">
           <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
               <img  src="../../../assets/img/note.svg" /></div>
          <mat-list-item>Notes</mat-list-item>
       </div> 
-      <div fxLayout="row" fxLayoutGap="50px">
+    </button>
+   </mat-nav-list>  
+   <mat-nav-list >
+    <button mat-button  >
+      <div fxLayout="row" fxLayoutGap="30px">
           <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img  src="../../../assets/img/remainder.svg" /></div>
           <mat-list-item>Reminders</mat-list-item>
       </div>
-    </mat-nav-list>  <mat-divider></mat-divider>
+    </button>
+  </mat-nav-list>  
 
+  <mat-divider></mat-divider>
+    
     <mat-nav-list>
+       
       <div class= "lable">LABELS</div>
-        <div fxLayout="row" fxLayoutGap="50px">
+      <button mat-button  >
+        <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" style=" margin-left: 26px" >
                 <img  src="../../../assets/img/label_outline_24px.svg" /></div>
            <mat-list-item>pqr</mat-list-item>
         </div> 
-        <div fxLayout="row" fxLayoutGap="50px">
+      </button> 
+    </mat-nav-list>
+    <mat-nav-list>
+        <button mat-button  >
+        <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
                 <img  src="../../../assets/img/outline-create-24px.svg" /></div>
-            <mat-list-item>Edit lables</mat-list-item>
+            <mat-list-item mat-raised-button (click) ="labelDialog()" >Edit lables</mat-list-item>
         </div>
-    </mat-nav-list> <mat-divider></mat-divider>
+        </button> 
+    </mat-nav-list> 
 
-    <mat-nav-list style="width:10%">
-        <div fxLayout="row" fxLayoutGap="50px">
+    <mat-divider></mat-divider>
+    <mat-nav-list >
+        <button mat-button  >
+        <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
                 <img  src="../../../assets/img/archieve.svg" /></div>
-           <mat-list-item>Archive</mat-list-item>
-        </div> 
-        <div fxLayout="row" fxLayoutGap="50px">
+           <mat-list-item >Archive</mat-list-item>
+          </div> 
+          </button>
+    </mat-nav-list>
+    <mat-nav-list >
+        <button mat-button  >
+        <div fxLayout="row" fxLayoutGap="30%" >
+          
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
                 <img  src="../../../assets/img/bin.svg" /></div>
-            <mat-list-item>Trash</mat-list-item>
-        </div>
-      </mat-nav-list>
+           
+                <mat-list-item>Trash</mat-list-item>
+            </div>
+            </button>
+       </mat-nav-list>
 
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>

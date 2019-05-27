@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-add-note',
@@ -17,7 +18,9 @@ export class AddNoteComponent implements OnInit {
   title = new FormControl('', [Validators.required])
   discription = new FormControl('', [Validators.required])
 
-  constructor(private notes: NotesService, private activeRoute: ActivatedRoute) { }
+  constructor(private notes: NotesService, 
+    private activeRoute: ActivatedRoute,
+    private snackBar: MatSnackBar) { }
   access_token = this.activeRoute.snapshot.paramMap.get('access_token');
 
   ngOnInit() {
@@ -40,12 +43,12 @@ export class AddNoteComponent implements OnInit {
 
     this.notes.addNote(this.model).subscribe(
       data => {
-        console.log("data after register: ", data);
-
+        console.log("data after creating note: ", data);
+        this.snackBar.open('note added successfully' ,'EndNow',{duration: 3000});
       },
       error => {
-        console.log("data after register: ", error);
-
+        console.log("error after creating note: ", error);
+        this.snackBar.open('note added failed' ,'EndNow',{duration: 3000});
       }
     )
   }

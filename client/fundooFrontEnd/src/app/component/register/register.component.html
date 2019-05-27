@@ -29,7 +29,7 @@
 
       <mat-form-field fxFlex.xs="100" appearance="outline" class="lastName">
         <mat-label>lastName</mat-label>
-        <mat-error *ngIf='lastName.Invalid'>{{getNameError()}}</mat-error> 
+        <mat-error *ngIf='lastName.Invalid'>{{getLastNameError()}}</mat-error> 
         <input matInput placeholder="enter last name" [(formControl)]="lastName">
         <mat-hint>last name is required</mat-hint>
       </mat-form-field>
@@ -39,6 +39,7 @@
 
       <mat-form-field fxFlex.xs="100" appearance="outline" class="email">
         <mat-label aria-autocomplete="off">Username/Email</mat-label>
+        <mat-error *ngIf='email.Invalid'>{{getEmailError()}}</mat-error> 
         <input matInput placeholder="enter your email address" [(formControl)]="email">
         <mat-hint>email is required</mat-hint>
       </mat-form-field>
@@ -47,6 +48,7 @@
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5%">
       <mat-form-field fxFlex.xs="100" appearance="outline">
         <mat-label>Password</mat-label>
+        <mat-error *ngIf='password.Invalid'>{{getPassError()}}</mat-error> 
         <input matInput placeholder="enter your password" [(formControl)]="password">
 
       </mat-form-field>

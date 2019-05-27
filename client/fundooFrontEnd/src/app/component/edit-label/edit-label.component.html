@@ -1,0 +1,24 @@
+<div>
+    <div class="example-container" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <button mat-icon-button>
+          <mat-icon>clear</mat-icon>
+        </button> 
+      </div>
+      <div>
+        <mat-form-field >
+         <input matInput placeholder="enter label" [(formControl)]="label">
+        </mat-form-field>
+      </div>   
+        <div>
+           <button mat-icon-button (click)="createLabel()">
+            <mat-icon>done</mat-icon>
+          </button>  
+        </div>
+      
+    </div>
+
+    <div fxLayoutAlign="end center">
+        <button mat-button>Done</button>
+    </div>
+</div>

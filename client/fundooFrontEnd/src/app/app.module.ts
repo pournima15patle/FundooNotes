@@ -24,6 +24,7 @@ import { RetriveAllNotesComponent } from './component/retrive-all-notes/retrive-
 import { EditCardComponent } from './component/edit-card/edit-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
+import { EditLabelComponent } from './component/edit-label/edit-label.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
     IconComponent,
     RetriveAllNotesComponent,
     EditCardComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    EditLabelComponent
     
   ],
   imports: [
@@ -54,7 +56,7 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
    
   ],
   providers: [HttpServiceService,UserService],
-  entryComponents:[DialogBoxComponent],
+  entryComponents:[DialogBoxComponent,EditLabelComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
