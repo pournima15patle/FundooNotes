@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http'
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { AppMaterial } from './app.module.appMaterial';
 import { RegisterComponent } from './component/register/register.component';
@@ -25,6 +25,7 @@ import { EditCardComponent } from './component/edit-card/edit-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { EditLabelComponent } from './component/edit-label/edit-label.component'
     RetriveAllNotesComponent,
     EditCardComponent,
     DialogBoxComponent,
-    EditLabelComponent
+    EditLabelComponent,
+
     
   ],
   imports: [
@@ -52,7 +54,8 @@ import { EditLabelComponent } from './component/edit-label/edit-label.component'
     AppMaterial,
     BrowserAnimationsModule,
     HttpClientModule,MatSidenavModule,
-    MatToolbarModule,MatDialogModule
+    MatToolbarModule,MatDialogModule,
+
    
   ],
   providers: [HttpServiceService,UserService],

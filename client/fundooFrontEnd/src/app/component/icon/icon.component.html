@@ -1,13 +1,54 @@
-<div fxFlex="10" fxLayout="row" fxFlex.xs="100" fxFlex.gt="400px" [style.fontSize.px]="1" fxLayoutGap="-7px">
+<div fxFlex="10" fxLayout="row" fxFlex.xs="100px" fxFlex.gt="400px" [style.fontSize.px]="1" fxLayoutGap="-7px">
+
+    <div fxLayoutAlign="space-between end" fxLayout="row" fxFlex="90">
+        <button
+        id="Remaind"
+        matTooltip="Remind me"
+        mat-icon-button
+        [matMenuTriggerFor]="remindme"
+        >
+
+        <button mat-icon-button>
+                <mat-icon> add_alert</mat-icon>
+            </button>
+        <!-- <mat-icon>
+        <img src="../../../assets/images/outline-notification_important-24px.svg"
+        /></mat-icon> -->
+        </button>
+        
+        <mat-menu #remindme="matMenu" class="matmenu" (click)="todayDate">
+        <div class="remaindMenu">
+        <mat-nav-list>
+        <!-- List of events in an remin me button -->
+        <mat-list role="List">
+        <!-- <mat-list-item role="listitem">
+        <p>Reminder :</p>
+        </mat-list-item> -->
+        
+        <mat-list-item>
+        <p (click)="todayDate()">Today Date</p>
+        </mat-list-item>
+        
+        <mat-list-item>
+        <p (click)="tommarrowDate()">Tomorrow Date</p>
+        </mat-list-item>
+        
+        <mat-list-item >
+         <p (click)="nextWeek()"> Next Week</p>
+       </mat-list-item>
+
+        </mat-list>
+        </mat-nav-list>
+        </div>
+        </mat-menu>
+
     <button mat-icon-button>
-        <mat-icon> add_alert</mat-icon>
+            <mat-icon>person_add</mat-icon>
     </button>
-    <button mat-icon-button>
-            <mat-icon> person_add</mat-icon>
-    </button>
-    <button mat-icon-button>
+    <button mat-icon-button  >
             <mat-icon> color_lens</mat-icon>
     </button>
+           
     <button mat-icon-button>
             <mat-icon> insert_photo</mat-icon>
     </button>

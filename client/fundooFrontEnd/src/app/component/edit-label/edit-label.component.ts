@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { NotesService } from 'src/app/services/notes.service';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-edit-label',

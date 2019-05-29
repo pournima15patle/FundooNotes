@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
-import { NotesService } from 'src/app/services/notes.service';
+import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
@@ -21,7 +21,7 @@ export class AddNoteComponent implements OnInit {
   constructor(private notes: NotesService, 
     private activeRoute: ActivatedRoute,
     private snackBar: MatSnackBar) { }
-  access_token = this.activeRoute.snapshot.paramMap.get('access_token');
+    access_token = this.activeRoute.snapshot.paramMap.get('access_token');
 
   ngOnInit() {
   }

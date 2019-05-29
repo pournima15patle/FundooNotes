@@ -20,7 +20,7 @@
       <div>
         <mat-form-field fxFlex.xs="100" appearance="outline" class="firstName">
           <mat-label>firstName</mat-label>
-          <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error> 
+          <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error>
           <input matInput placeholder="enter first name" [(formControl)]="firstName">
           <mat-hint>first name is required</mat-hint>
         </mat-form-field>
@@ -29,7 +29,7 @@
 
       <mat-form-field fxFlex.xs="100" appearance="outline" class="lastName">
         <mat-label>lastName</mat-label>
-        <mat-error *ngIf='lastName.Invalid'>{{getLastNameError()}}</mat-error> 
+        <mat-error *ngIf='lastName.Invalid'>{{getLastNameError()}}</mat-error>
         <input matInput placeholder="enter last name" [(formControl)]="lastName">
         <mat-hint>last name is required</mat-hint>
       </mat-form-field>
@@ -39,34 +39,45 @@
 
       <mat-form-field fxFlex.xs="100" appearance="outline" class="email">
         <mat-label aria-autocomplete="off">Username/Email</mat-label>
-        <mat-error *ngIf='email.Invalid'>{{getEmailError()}}</mat-error> 
+        <mat-error *ngIf='email.Invalid'>{{getEmailError()}}</mat-error>
         <input matInput placeholder="enter your email address" [(formControl)]="email">
         <mat-hint>email is required</mat-hint>
       </mat-form-field>
 
     </div>
+
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5%">
-      <mat-form-field fxFlex.xs="100" appearance="outline">
-        <mat-label>Password</mat-label>
-        <mat-error *ngIf='password.Invalid'>{{getPassError()}}</mat-error> 
-        <input matInput placeholder="enter your password" [(formControl)]="password">
+      <div>
+        <mat-form-field fxFlex.xs="100" appearance="outline" style="width: 225px;">
+          <mat-label>Password</mat-label>
+          <mat-error *ngIf='password.Invalid'>{{getPassError()}}</mat-error>
+          <input matInput placeholder="enter your password" [type]="!hide ? 'password' : 'text'"
+            [(formControl)]="password">
+          <!-- <mat-icon class="icon" matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}>visibility_off </mat-icon> -->
+          <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
-      </mat-form-field>
+        </mat-form-field>
+      </div>
 
-
-      <mat-form-field appearance="outline">
-        <mat-label>Confirm Password</mat-label>
-        <input matInput placeholder="enter your password" [(formControl)]="password">
-      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline" style="width: 225px;">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput placeholder="enter your password" [type]="!hide ? 'password' : 'text'"
+            [(formControl)]="confirm_password">
+          <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </div>
       <!-- <i class="material-icons">visibility_off </i> -->
-      <mat-icon class="icon">visibility_off </mat-icon>
+      <div>
+
+      </div>
     </div>
     <div>
       <mat-hint>Use 8 or more characters with a mix<br> of letters, numbers & symbols </mat-hint>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
       <div class="signIn" style="margin-right: 160px;">
-        <mat-label><br>Sign in instead</mat-label>
+        <mat-label routerLink="/login"><br>Sign in instead</mat-label>
       </div>
       <div class="button1">
         <button mat-button (click)="next()">Create</button>
@@ -75,76 +86,3 @@
 
   </mat-card>
 </div>
-<!-- <html>
-<div fxLayoutAlign="space-around center" fxFlex="100">
-  <mat-card fxFlex="40" class="card" fxFlex.xs="100">
-    <mat-card-title class="fundoo">
-      <span class="f">F</span>
-      <span class="u">u</span>
-      <span class="n">n</span>
-      <span class="d">d</span>
-      <span class="o">o</span>
-      <span class="oo">o</span>
-    </mat-card-title>
-    <mat-card-header>
-      <mat-card-title class="acc">Create your Fundoo Account</mat-card-title>
-      <mat-card-subtitle class="acc1">Continue to Fundoo</mat-card-subtitle>
-    </mat-card-header>
-
-
-    <body>
-      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="2%">
-        <mat-form-field fxFlex.xs="100" appearance="outline" id="firstname">
-          <mat-label fxFlex="40" aria-autocomplete="off"> First name</mat-label>
-          <input matInput placeholder="First name" [formControl]="firstname" />
-        </mat-form-field>
-        <mat-form-field fxFlex.xs="100" appearance="outline" id="lastname">
-          <mat-label fxFlex="40" aria-autocomplete="off"> Last name</mat-label>
-          <input matInput placeholder="Last name" [formControl]="lastname" />
-        </mat-form-field>
-      </div>
-
-      <div>
-        <mat-form-field appearance="outline" class="email">
-          <mat-label aria-autocomplete="off">Email id</mat-label>
-          <input matInput placeholder="Enter your email id" [formControl]="emailFormControl"
-            [errorStateMatcher]="matcher" />
-          <mat-hint fxShow.sm="false" fxShow.xs="false" fxShow="true">Errors appear instantly!</mat-hint>
-          <mat-error *ngIf="
-emailFormControl.hasError('email') &&
-!emailFormControl.hasError('required')
-">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="2%">
-        <mat-form-field appearance="outline" class="password">
-          <mat-label aria-autocomplete="off">Password</mat-label>
-          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password"
-            autocomplete="off" requried />
-          <mat-hint fxShow.sm="false" fxShow.xs="false" fxShow="true"> -->
-<!-- 
-              <div class="register" fxLayout="row" fxLayoutGap="5%" fxLayout.xs="column">
-
-                  <mat-form-field appearance="outline" style="height:53px">
-                  
-                  <mat-label>First Name</mat-label>
-                  <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error> 
-                  <input matInput placeholder="First Name" [(formControl)]="firstName">
-                  <mat-hint>Enter first name is required</mat-hint>
-                  
-                  </mat-form-field>
-                  <div fxLayoutGap="5%" fxLayout.xs="column">
-                  <mat-form-field appearance="outline">
-                  <mat-label>Last Name</mat-label>
-                  <mat-error *ngIf='firstName.Invalid'>{{getNameError()}}</mat-error> 
-                  <input matInput placeholder="Last Name" [(formControl)]="lastName">
-                  <mat-hint>Enter last name is required</mat-hint>
-                  </mat-form-field>
-                  </div>
-                  </div> -->

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../../services/user.service';
 import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-register',
@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   lastName = new FormControl('', [Validators.required])
   email = new FormControl('', [Validators.required, Validators.email])
   password = new FormControl('', [Validators.required, Validators.pattern
+    ('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
+  confirm_password=  new FormControl('', [Validators.required, Validators.pattern
     ('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
 
   ngOnInit() {
@@ -38,7 +40,13 @@ export class RegisterComponent implements OnInit {
       this.lastName.hasError('pattern')?'invalid last name':''
     }
 
- next(){
+ next(){ 
+   
+    if(this.password.value!=this.confirm_password.value){
+      this.snackBar.open('both password should match' ,'EndNow',{duration: 3000});
+     }
+    
+  else{
    console.log("name",this.firstName.value);
    
     
@@ -62,7 +70,7 @@ export class RegisterComponent implements OnInit {
         this.snackBar.open('Register failed' ,'EndNow',{duration: 3000});
        }
      )
-
+      }
   }
   
 }

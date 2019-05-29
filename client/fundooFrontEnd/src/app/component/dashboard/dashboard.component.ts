@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
+import { ArchiveComponent } from '../archive/archive.component';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { EditLabelComponent } from '../edit-label/edit-label.component';
 export class DashboardComponent implements OnInit {
 message:string="FundooNotes"
   constructor(
-    private dialog:MatDialog
+    private dialog:MatDialog,
   ) { }
 
   ngOnInit() {
@@ -35,6 +36,17 @@ message:string="FundooNotes"
   
     dialogRef.afterClosed().subscribe(result => {
       console.log('The laabel dialog was closed',result);
+      
+    });
+  }
+
+  archiveDialog(){
+    const archiveRef=this.dialog.open(ArchiveComponent,{
+      width:'300px',
+      data:{}
+    });
+    archiveRef.afterClosed().subscribe(result => {
+      console.log('The notes archive',result);
       
     });
   }

@@ -92,19 +92,19 @@
           <!-- <mat-icon matSuffix>visibility_off</mat-icon> -->
         </mat-form-field>
       </div>
-      
+
     </div>
-    <mat-label class="lable1">forgot password</mat-label>
+    <mat-label class="lable1" routerLink="/forgotPassword">forgot password</mat-label>
 
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
-        <div class="lable">
-          <mat-label>Create Account</mat-label>
-        </div>
-       
-        <div class="button1">
-          <button mat-button (click)="next()">Sign In</button>
-        </div>
+      <div class="lable">
+        <mat-label routerLink="/register">Create Account</mat-label>
+      </div>
+
+      <div class="button1">
+        <button mat-button (click)="next()">Sign In</button>
+      </div>
     </div>
-    
+
   </mat-card>
 </div>

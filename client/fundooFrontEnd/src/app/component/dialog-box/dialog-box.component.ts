@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { NotesService } from 'src/app/services/notes.service';
+import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -63,43 +63,3 @@ export class DialogBoxComponent implements OnInit {
     this.dialogRef.close();
   }
 }
-//extra
-// title: any;
-// description: any;
-// color: any;
-// noteID: any;
-// constructor(
-// public dialogRef: MatDialogRef<EditCardComponent>,
-// @Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService) {
-// console.log("Data",data);
-// this.title=new FormControl(data.notedata.title);
-// console.log("Title here",this.title);
-// this.description=new FormControl(data.notedata.description);
-// this.color=new FormControl(data.notedata.color);
-// this.noteID=new FormControl(data.notedata._id);
-// }
-// ngOnInit() {
-// console.log(this.data);
-// }
-// // on no click
-// onNoClick(): void {
-// console.log('Dialog');
-// this.dialogRef.close();
-// }
-
-// updatenote(){
-// console.log("update",this.title);
-// const requestBody={
-// noteID:this.noteID.value,
-// title:this.title.value,
-// description:this.description.value,
-// color:this.color.value
-// }
-// console.log("req",requestBody);
-// this.userService.updatenote(requestBody).subscribe(data => {
-// console.log(data);
-// },
-// error => {
-// console.log(error);
-// });
-// }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
@@ -23,7 +23,11 @@ export class LoginComponent implements OnInit {
   }
 
   next() {
-
+    
+    if(this.email.value==""||this.password.value==""){
+      this.snackBar.open('Email or password should not empty' ,'EndNow',{duration: 3000});
+      
+    }else{
     this.model = {
       'email': this.email.value,
       'password': this.password.value
@@ -45,4 +49,5 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+}
 }

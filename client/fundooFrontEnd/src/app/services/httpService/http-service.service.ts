@@ -54,6 +54,8 @@ export class HttpServiceService {
     return this.http.post(this.baseUrl2, options.body,httpOptions);
   }
 
+// ***************************************************************************
+
   postgetNote(options){
     const httpOptions={
       headers:new HttpHeaders({
@@ -90,5 +92,10 @@ export class HttpServiceService {
     
     console.log("thi is http post",this.baseUrl3, options.body,httpOptions)
     return this.http.post(this.baseUrl3, options.body,httpOptions);
+  }
+
+
+  postReminder(options){
+    return this.http.post(this.baseUrl2+'reminderNotes' , options.body);
   }
 }

@@ -37,6 +37,13 @@ export class NotesService {
       
       body: requestBody
     }
-    return this.http.postCreateLabel(reqbody)
+    return this.http.postReminder(reqbody)
+  }
+
+  todayDate(todayDate){
+    const reqbody={
+      body:todayDate
+    }
+    return this.http.postReminder(reqbody)
   }
 }

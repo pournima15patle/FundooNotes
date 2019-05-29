@@ -107,7 +107,7 @@
         <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
                 <img  src="../../../assets/img/archieve.svg" /></div>
-           <mat-list-item >Archive</mat-list-item>
+           <mat-list-item mat-raised-button (click) ="archiveDialog()">Archive</mat-list-item>
           </div> 
           </button>
     </mat-nav-list>

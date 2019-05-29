@@ -259,7 +259,7 @@ module.exports = async function (Notes) {
             cb(null, "Enter details is not valid")
         }
         else {
-            Notes.updateAll({ _id: info.noteId }, { title: info.title }, { description: info.description }, function (err, data) {
+            Notes.updateAll({ _id: info.noteId }, { title: info.title , description: info.description }, function (err, data) {
                 if (err) {
                     cb(err)
 
