@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class AddNoteComponent implements OnInit {
   flag = true;
-  flag1 = true;
+  gridView = false;
 
   data: any;
   model: any;

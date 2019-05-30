@@ -98,4 +98,8 @@ export class HttpServiceService {
   postReminder(options){
     return this.http.post(this.baseUrl2+'reminderNotes' , options.body);
   }
+
+  postgetAllLabel(){
+    return this.http.get(this.baseUrl3)
+  }
 }

@@ -26,6 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogBoxComponent } from './component/dialog-box/dialog-box.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { AppRoutingModule } from './app-routing.module';
+import { GetAllLableComponent } from './component/get-all-lable/get-all-lable.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AppRoutingModule } from './app-routing.module';
     EditCardComponent,
     DialogBoxComponent,
     EditLabelComponent,
+    GetAllLableComponent,
 
     
   ],

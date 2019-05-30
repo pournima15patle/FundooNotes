@@ -18,12 +18,7 @@
         
         <mat-menu #remindme="matMenu" class="matmenu" (click)="todayDate">
         <div class="remaindMenu">
-        <mat-nav-list>
-        <!-- List of events in an remin me button -->
-        <mat-list role="List">
-        <!-- <mat-list-item role="listitem">
-        <p>Reminder :</p>
-        </mat-list-item> -->
+       
         
         <mat-list-item>
         <p (click)="todayDate()">Today Date</p>
@@ -37,8 +32,7 @@
          <p (click)="nextWeek()"> Next Week</p>
        </mat-list-item>
 
-        </mat-list>
-        </mat-nav-list>
+      
         </div>
         </mat-menu>
 
@@ -46,8 +40,10 @@
             <mat-icon>person_add</mat-icon>
     </button>
     <button mat-icon-button  >
-            <mat-icon> color_lens</mat-icon>
+            <mat-icon > color_lens</mat-icon>
     </button>
+
+
            
     <button mat-icon-button>
             <mat-icon> insert_photo</mat-icon>

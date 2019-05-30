@@ -43,14 +43,35 @@
   </div>
 <!-- ***************************************************************************** -->
 
-  <!-- <button mat-icon-button color="basic" id="grid" fxHide.xs>
+  <button mat-icon-button color="basic" id="grid" fxHide.xs>
     <mat-icon>
-      <img *ngIf="gridView" (click)="changeview()" matTooltip="List view"
-        src="../../../assets/images/outline-view_agenda-24px.svg" />
-      <img isClicked *ngIf="!gridView" (click)="changeview()" matTooltip="Grid view"
-        src="../../../assets/images/outline-border_all-24px.svg" /></mat-icon>
-  </button> -->
+      <img *ngIf="gridView" (click)="changeView()" matTooltip="List view"
+        src="../../../assets/img/outline-view_agenda-24px.svg" />
+      <img isClicked *ngIf="!gridView" (click)="changeView()" matTooltip="Grid view"
+        src="../../../assets/img/outline-border_all-24px.svg" /></mat-icon>
+  </button>
 
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+     <img  src="../../../assets/img/outline-settings-24px.svg" />
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+     
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item >
+        <span>Send Feedback</span>
+      </button>
+      <button mat-menu-item (click)="go2UrlHelp()">
+        <span>Help</span>
+      </button>
+      <button mat-menu-item>
+         <span>App Downloads</span>
+      </button>
+      <button mat-menu-item>
+          <span>Keyboard Shorcuts</span>
+      </button>
+    </mat-menu>
 
 </mat-toolbar>
 
@@ -69,7 +90,7 @@
     </button>
    </mat-nav-list>  
    <mat-nav-list >
-    <button mat-button  >
+    <button mat-button >
       <div fxLayout="row" fxLayoutGap="30px">
           <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img  src="../../../assets/img/remainder.svg" /></div>
@@ -83,13 +104,7 @@
     <mat-nav-list>
        
       <div class= "lable">LABELS</div>
-      <button mat-button  >
-        <div fxLayout="row" fxLayoutGap="30px">
-            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" style=" margin-left: 26px" >
-                <img  src="../../../assets/img/label_outline_24px.svg" /></div>
-           <mat-list-item>pqr</mat-list-item>
-        </div> 
-      </button> 
+        <app-get-all-lable></app-get-all-lable>
     </mat-nav-list>
     <mat-nav-list>
         <button mat-button  >

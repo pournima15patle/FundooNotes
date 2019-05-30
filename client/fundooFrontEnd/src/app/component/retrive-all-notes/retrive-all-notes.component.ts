@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../services/notes.service';
 import { MatDialog } from '@angular/material';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { GridServiceService } from '../../services/grid-service.service';
 
 @Component({
   selector: 'app-retrive-all-notes',
@@ -11,13 +12,19 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 export class RetriveAllNotesComponent implements OnInit {
   notes: any[];
   items: any[];
+  gridView:boolean;
   constructor(private note: NotesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private view:GridServiceService
 
   ) { }
 
   ngOnInit() {
     this.retriveCards();
+    this.view.currentView.subscribe(
+      responce=>this.gridView=responce
+    )
+
   }
 
 
@@ -49,6 +56,8 @@ export class RetriveAllNotesComponent implements OnInit {
       this.notes = result;
     });
   }
+
+  
 
 
 }
