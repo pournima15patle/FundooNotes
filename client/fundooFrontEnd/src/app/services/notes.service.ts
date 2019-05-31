@@ -46,10 +46,24 @@ export class NotesService {
     return this.http.postgetAllLabel()
   }
 
-  todayDate(todayDate){
+ 
+
+  setReminder(data) {
+    console.log("Inside note Ser"+data.reminder);
+    
     const reqbody={
-      body:todayDate
+      body:data
     }
     return this.http.postReminder(reqbody)
+  }
+
+  setColor(data){
+    console.log("Inside note Ser "+data.color);
+    console.log("Inside note Ser "+data.noteId);
+
+    const reqbody={
+      body:data
+    }
+    return this.http.postSetColor(reqbody)
   }
 }

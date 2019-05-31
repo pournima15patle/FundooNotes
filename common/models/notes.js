@@ -46,22 +46,77 @@ module.exports = async function (Notes) {
     **********************************************************************************************/
 
     //var moment = require('moment');
-    Notes.reminderNotes = function (id, reminder, cb) {
-        console.log(' ', id, reminder, cb);
+    // Notes.reminderNotes = function (id, reminder, cb) {
+    //     console.log(' ', id, reminder, cb);
 
-        //let date = moment(reminder).format('MMMM Do YYYY, h:mm:ss a');
+    //     //let date = moment(reminder).format('MMMM Do YYYY, h:mm:ss a');
 
-        Notes.updateAll({ _id: id }, { reminder: reminder }, function (err, data) {
+    //     Notes.updateAll({ _id: id }, { reminder: reminder }, function (err, data) {
 
-            if (err) {
-                cb(err)
+    //         if (err) {
+    //             cb(err)
 
-            } else {
+    //         } else {
 
-                cb(null, data);
-            }
+    //             cb(null, data);
+    //         }
 
-        });
+    //     });
+    // }
+
+    // Notes.remoteMethod('reminderNotes', {
+    //     http: {
+    //         path: '/reminderNotes',
+    //         verb: 'post'
+    //     },
+    //     accepts: [
+
+    //         {
+    //             arg: 'id',
+    //             type: 'string',
+    //             http: {
+    //                 source: 'form'
+    //             }
+    //         },
+    //         {
+    //             arg: 'reminder',
+    //             type: 'String',
+    //             http: {
+    //                 source: 'form'
+    //             }
+
+    //         }],
+    //     returns: {
+    //         arg: 'result',
+    //         type: 'string'
+    //     }
+    // });
+
+
+    Notes.reminderNotes = function (data, req, cb) {
+        console.log("ffgf", data);
+        var info = {
+            'noteId': data.noteId,
+            'reminder': data.reminder
+        }
+
+        console.log("info", info.noteId);
+        if ( data.id == null && data.reminder == null) {
+
+            console.log("Enter details is not valid");
+            cb(null, "Enter details is not valid")
+        }
+        else {
+            Notes.updateAll({ _id: info.noteId }, { reminder: info.reminder }, function (err, data) {
+                if (err) {
+                    cb(err)
+
+                } else {
+
+                    cb(null, data);
+                }
+            });
+        }
     }
 
     Notes.remoteMethod('reminderNotes', {
@@ -69,27 +124,86 @@ module.exports = async function (Notes) {
             path: '/reminderNotes',
             verb: 'post'
         },
-        accepts: [
+        'accepts': [
 
-            {
-                arg: 'id',
-                type: 'string',
-                http: {
-                    source: 'form'
-                }
-            },
-            {
-                arg: 'reminder',
-                type: 'String',
-                http: {
-                    source: 'form'
-                }
+            { arg: 'data', type: 'object', http: { source: 'body' }, "description": 'JSON object in body ', "required": true },
+            { "arg": 'req', "type": 'object', "http": { "source": 'req' } }
 
-            }],
+        ],
         returns: {
             arg: 'result',
             type: 'string'
         }
+    });  
+
+
+    /**
+ * @Purpose : To change the color of notes by using Id
+ */
+
+Notes.color = function (data, req, cb) {
+    console.log("data",data);
+    
+    try {
+        if (typeof data.id === 'undefined') {
+            throw new Error('ID is missing');
+        }
+        if (typeof data.color === 'undefined') {
+            throw new Error('Action is undefined');
+        }
+
+        var info = {
+            "id": data.id,
+            "color": data.color
+        }
+        console.log("note id",info);
+        
+        if (req.currentUser != null && data.id != null && data.color != null) {
+            cb(null, "user is not authenticate")
+        } else {
+
+            // console.log("request: ", isTrash, id);
+            // if (typeof data.isTrash === "boolean") {
+
+            Notes.updateAll({ _id: info.id }, { color: info.color }, function (err, data) {
+                if (err) {
+                    cb(err)
+                } else {
+                    var response = "Successfully removed";
+                    cb(null, data);
+                    // console.log(response);
+                }
+            });
+            // } 
+            // else {
+            // cb("Give Boolean input true/false")
+            // }
+        }
+    } catch (e) {
+        console.error('Error: ', e);
+        if (e instanceof AssertionError
+            || e instanceof RangeError
+            || e instanceof ReferenceError
+            || e instanceof SyntaxError
+            || e instanceof SystemError
+            || e instanceof TypeError) {
+            return cb('Something bad happened!');
+        } else {
+            return cb(e.message);
+        }
+    }
+}
+
+Notes.remoteMethod(
+    'color',
+    {
+        http: { path: '/color', verb: 'post' },
+        accepts: [{
+            arg: 'data', type: 'object', http: { source: 'body' },
+            "description": 'Requred UserId,NoteId and Set color', "required": true
+        },
+        { "arg": 'req', "type": 'object', "http": { "source": 'req' } }],
+        returns: { arg: 'result', type: 'string' }
     });
 
 
@@ -259,7 +373,7 @@ module.exports = async function (Notes) {
             cb(null, "Enter details is not valid")
         }
         else {
-            Notes.updateAll({ _id: info.noteId }, { title: info.title , description: info.description }, function (err, data) {
+            Notes.updateAll({ _id: info.noteId }, { title: info.title, description: info.description }, function (err, data) {
                 if (err) {
                     cb(err)
 
@@ -288,7 +402,10 @@ module.exports = async function (Notes) {
         }
     });
 
+    
 };
 // accept: [{ arg: 'data', type: 'object', http: { source: 'body' },
 //  "description": 'noteId type :string,isTrash type:boolean in body ', "required": true },
 // { "arg": 'req', "type": 'object', "http": { "source": 'req' } }
+
+

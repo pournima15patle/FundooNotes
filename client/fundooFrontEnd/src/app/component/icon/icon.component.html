@@ -1,6 +1,6 @@
 <div fxFlex="10" fxLayout="row" fxFlex.xs="100px" fxFlex.gt="400px" [style.fontSize.px]="1" fxLayoutGap="-7px">
 
-    <div fxLayoutAlign="space-between end" fxLayout="row" fxFlex="90">
+    <div fxLayoutAlign="start end"  fxLayout="row" fxFlex="90">
         <button
         id="Remaind"
         matTooltip="Remind me"
@@ -19,31 +19,45 @@
         <mat-menu #remindme="matMenu" class="matmenu" (click)="todayDate">
         <div class="remaindMenu">
        
-        
-        <mat-list-item>
-        <p (click)="todayDate()">Today Date</p>
+        <button mat-button (click)="todayDate()" >
+         <mat-list-item >
+           <p >Today Date</p>
         </mat-list-item>
-        
-        <mat-list-item>
-        <p (click)="tommarrowDate()">Tomorrow Date</p>
-        </mat-list-item>
-        
-        <mat-list-item >
-         <p (click)="nextWeek()"> Next Week</p>
-       </mat-list-item>
+        </button>
+
+        <button mat-button (click)="tomarrowDate()" >
+                <mat-list-item >
+                  <p >Tomarrow Date</p>
+               </mat-list-item>
+               </button>
+
+               
+        <button mat-button (click)="nextWeek()" >
+                <mat-list-item >
+                  <p >Next Week</p>
+               </mat-list-item>
+               </button>
 
       
         </div>
         </mat-menu>
 
-    <button mat-icon-button>
-            <mat-icon>person_add</mat-icon>
+    <button mat-icon-button >
+            <mat-icon >person_add</mat-icon>
     </button>
-    <button mat-icon-button  >
+    <button mat-icon-button [matMenuTriggerFor]="colorplatte"  >
             <mat-icon > color_lens</mat-icon>
     </button>
 
-
+    <mat-menu #colorplatte="matMenu">
+                <div fxLayout="row" fxLayoutAlign=" start" *ngFor='let color of colorArray'>
+                <div *ngFor='let notecolors of color'>
+                <button [ngStyle]="{'background-color':notecolors.hexcode}" (click)="setColor(notecolors.hexcode)"
+                mat-mini-fab>
+         </button>
+                </div>
+                </div>
+                </mat-menu>      
            
     <button mat-icon-button>
             <mat-icon> insert_photo</mat-icon>

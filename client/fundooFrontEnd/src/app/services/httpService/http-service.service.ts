@@ -96,10 +96,27 @@ export class HttpServiceService {
 
 
   postReminder(options){
-    return this.http.post(this.baseUrl2+'reminderNotes' , options.body);
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token')
+      })
+    };
+    return this.http.post(this.baseUrl2+'reminderNotes' , options.body,httpOptions);
   }
 
   postgetAllLabel(){
     return this.http.get(this.baseUrl3)
+  }
+
+  postSetColor(options){
+    console.log("this is http:",options);
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token')
+      })
+    };
+    return this.http.post(this.baseUrl2+'color' , options.body,httpOptions);
   }
 }

@@ -10,18 +10,12 @@
     border-radius: 8px;
 }
 
-.edit_hover_class div{
-    visibility:hidden;
-  }
-  .edit_hover_class:hover div {
-   visibility:visible;
- }
- .card:hover{
-    .icon_hover{
-    visibility: visible;
-    }
-    }
-    .icon_hover
-    {
-    visibility: hidden;
-    }
+    mat-card:hover{
+      .mouseover{
+      visibility: visible;
+      }
+      
+      }
+      .mouseover{
+      visibility: hidden;
+      }

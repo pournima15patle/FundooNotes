@@ -13,6 +13,10 @@ export class RetriveAllNotesComponent implements OnInit {
   notes: any[];
   items: any[];
   gridView:boolean;
+  model:any;
+  reminder:any;
+  todayDate:any
+  myColor: any;
   constructor(private note: NotesService,
     private dialog: MatDialog,
     private view:GridServiceService
@@ -57,7 +61,54 @@ export class RetriveAllNotesComponent implements OnInit {
     });
   }
 
+    setReminder(item,$event)
+    {
+      console.log("usffjewp;foewewhfpwf;ewkfw",item);
+      console.log("usffjewp;foewewhfpwf;ewkfw",$event);
+      this.todayDate=$event;
+      this.model={
+        noteId:item.id,
+        reminder:this.todayDate     
+      }
+       
+      this.note.setReminder(this.model).subscribe(
+        data => {
+          console.log("data of setReminders: ", data);
+      
+        },
+        error => {
+          console.log("error of setReminders: ", error);
+  
+        }
+      )
+    }
+
+
+    setColor(item,$event){
+      console.log("data in note ",item);
+      console.log("data in note ",item.id);
+
+      
+      this.myColor=$event;
+      this.model={
+        id:item.id,
+        color:this.myColor
+      }
+      this.note.setColor(this.model).subscribe(
+        data => {
+          console.log("data of setColor: ", data);
+      
+        },
+        error => {
+          console.log("error in setColor: ", error);
+  
+        }
+      )
+    }
+    
+  }
+
   
 
 
-}
+
