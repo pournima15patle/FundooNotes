@@ -81,7 +81,7 @@
 
      
     <mat-nav-list >
-      <button mat-button  >
+      <button mat-button (click)="retriveAllNotes()" >
        <div fxLayout="row" fxLayoutGap="30px">
           <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
               <img  src="../../../assets/img/note.svg" /></div>
@@ -118,11 +118,11 @@
 
     <mat-divider></mat-divider>
     <mat-nav-list >
-        <button mat-button  >
+        <button mat-button (click) ="archive()" >
         <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
                 <img  src="../../../assets/img/archieve.svg" /></div>
-           <mat-list-item mat-raised-button (click) ="archiveDialog()">Archive</mat-list-item>
+           <mat-list-item mat-raised-button (click) ="archive()">Archive</mat-list-item>
           </div> 
           </button>
     </mat-nav-list>
@@ -140,10 +140,8 @@
 
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
-      <app-add-note></app-add-note>
-      <div>
-        <app-retrive-all-notes></app-retrive-all-notes>
-      </div>
+      <router-outlet></router-outlet>
+
     </mat-sidenav-content>
 </mat-sidenav-container>
 </div>

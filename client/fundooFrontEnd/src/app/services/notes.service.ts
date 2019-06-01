@@ -15,14 +15,30 @@ export class NotesService {
     }
     return this.http.postaddNote(data)
   }
-  
+  /**************************************************************************************************
+   * 
+   ***************************************************************************************************/
   getNote(obj){
     const token = localStorage.getItem('access_token');
     const data={
       tkn :token,
       body:obj
     }
+    
     return this.http.postgetNote(data)
+  }
+/***************************************************************************************************
+ * 
+ **************************************************************************************************/
+  getNoteForArchive(obj){
+    console.log("getAllArchive in note service ",obj);
+    
+    const token = localStorage.getItem('access_token');
+    const data={
+      tkn :token,
+      body:obj
+    }
+    return this.http.postgetNoteForArchive(data)
   }
 
   updateNote(requestBody) {
@@ -65,5 +81,12 @@ export class NotesService {
       body:data
     }
     return this.http.postSetColor(reqbody)
+  }
+
+  setArchive(data){
+    const reqbody={
+      body:data
+    }
+    return this.http.postSetArchive(reqbody)
   }
 }

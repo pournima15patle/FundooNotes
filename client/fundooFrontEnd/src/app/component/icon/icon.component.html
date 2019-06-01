@@ -1,6 +1,6 @@
-<div fxFlex="10" fxLayout="row" fxFlex.xs="100px" fxFlex.gt="400px" [style.fontSize.px]="1" fxLayoutGap="-7px">
+<div fxFlex="10" fxLayout="row" fxFlex="auto"  fxFlex.xs="100"  [style.fontSize.px]="1" fxLayoutGap="-7px">
 
-    <div fxLayoutAlign="start end"  fxLayout="row" fxFlex="90">
+    <div fxLayoutAlign="start end"  fxLayout="row" fxFlex="50">
         <button
         id="Remaind"
         matTooltip="Remind me"
@@ -62,7 +62,7 @@
     <button mat-icon-button>
             <mat-icon> insert_photo</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="isArchive()">
             <mat-icon> archive</mat-icon>
     </button>
     <button mat-icon-button>

@@ -35,7 +35,7 @@ export class RetriveAllNotesComponent implements OnInit {
   retriveCards() {
     this.note.getNote(this.notes).subscribe(
       data => {
-        console.log("data of getAllNotes: ", data);
+        console.log("data of getAllNotes in retriveAll Notes : ", data['data']);
         this.notes = data['data']
       },
       error => {

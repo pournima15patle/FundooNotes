@@ -54,7 +54,7 @@ export class HttpServiceService {
     return this.http.post(this.baseUrl2, options.body,httpOptions);
   }
 
-// ***************************************************************************
+// *****************************************************************************************************
 
   postgetNote(options){
     const httpOptions={
@@ -64,10 +64,24 @@ export class HttpServiceService {
     };
     console.log("tokens: ", localStorage.getItem('access_token'));
     
-    console.log("options for get all notes" , options.body);
+ 
     return this.http.get(this.baseUrl2+'getNotes', options.body);
   }
-
+/***************************************************************************************************** */
+  postgetNoteForArchive(options){
+    console.log("gelAllNotes for archive in http service",options);
+    
+    const httpOptions={
+      headers:new HttpHeaders({
+        'Authorization':localStorage.getItem('access_token')
+      })
+    };
+    console.log("tokens: ", localStorage.getItem('access_token'));
+    
+    console.log("options for get all notes in archive" , options);
+    return this.http.get(this.baseUrl2+'getNotes', options.body);
+  }
+/******************************************************************************************************** */
   postUpdateNote(options){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -118,5 +132,14 @@ export class HttpServiceService {
       })
     };
     return this.http.post(this.baseUrl2+'color' , options.body,httpOptions);
+  }
+
+  postSetArchive(options){
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token')
+      })
+    };
+    return this.http.post(this.baseUrl2+'archive' , options.body,httpOptions);
   }
 }

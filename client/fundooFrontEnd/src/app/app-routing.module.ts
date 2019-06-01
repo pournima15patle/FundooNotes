@@ -9,12 +9,14 @@ import { AddNoteComponent } from './component/add-note/add-note.component';
 import { ArchiveComponent } from './component/archive/archive.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { TrashComponent } from './component/trash/trash.component';
+import { RetriveAllNotesComponent } from './component/retrive-all-notes/retrive-all-notes.component';
 
 const routes: Routes = [
   {
     path:'',
     component:LoginComponent
   },
+    
   {
     path:'register',
     component:RegisterComponent
@@ -38,6 +40,14 @@ const routes: Routes = [
 
     children:[
       {
+        path:'',
+        component:AddNoteComponent
+      },
+      {
+        path:'getAllNotes',
+        component:RetriveAllNotesComponent
+      },
+      {
         path:'addNote',
         component:AddNoteComponent
       },
@@ -45,6 +55,7 @@ const routes: Routes = [
         path:'archive',
         component:ArchiveComponent
       },
+      
       {
         path:'reminder',
         component:ReminderComponent

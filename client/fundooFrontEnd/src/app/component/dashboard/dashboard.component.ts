@@ -4,6 +4,8 @@ import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { ArchiveComponent } from '../archive/archive.component';
 import { GridServiceService } from '../../services/grid-service.service';
 import {DOCUMENT} from '@angular/common'
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +19,8 @@ gridView:boolean;
   constructor(
     @Inject(DOCUMENT) private document:any,
     private dialog:MatDialog,
-    private view:GridServiceService
+    private view:GridServiceService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -77,4 +80,11 @@ this.viewUpdate();
     });
   }
   
+  archive(){
+    this.router.navigate(['dashboard','archive']);
+  }
+
+  retriveAllNotes(){
+    this.router.navigate(['dashboard','archive']);
+  }
 }

@@ -11,9 +11,13 @@ export class IconComponent implements OnInit {
   @Input() noteData: any;
   @Output() reminder = new EventEmitter();
   @Output() color=new EventEmitter();
+  model: any
+  flag=false
   constructor(private note: NotesService) { }
 
   ngOnInit() {
+  
+    
   }
 
 
@@ -79,6 +83,24 @@ export class IconComponent implements OnInit {
     this.color.emit(notecolors)
   }
   
+  isArchive(){
+    this.model={
+      id:this.noteData.id,
+      isArchive:this.flag=true,
+    }
+
+    this.note.setArchive(this.model).subscribe(
+      data => {
+        console.log("data with set archive: ", data);
+        //this.snackBar.open('Register successfully' ,'EndNow',{duration: 3000});
+        
+      },
+      error => {
+       console.log("error with set archive:", error);
+       //this.snackBar.open('Register failed' ,'EndNow',{duration: 3000});
+      }
+    )
+  }
 }
 
 
