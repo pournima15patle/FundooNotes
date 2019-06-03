@@ -1,3 +1,36 @@
-<p>
-  trash works!
-</p>
+<div *ngFor='let item of notes' fxLayoutAlign="center " fxLayout.xs="row" fxFlex="30" fxLayoutGap="%">
+  <div *ngIf="item.isTrash===true">
+
+    <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:10px;"
+      fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="65" fxFlexOffset.xl="10" mat-raised-button
+      style="box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.200)">
+
+
+      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="8%">
+
+        <div (click)="openDialogbox(item)">
+          {{item.title }}
+        </div>
+
+        <div (click)="openDialogbox(item)">
+          {{item.discription}}
+        </div>
+
+        <div>
+          <mat-chip-list #chipList>
+            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
+              {{item.reminder | date:'MMM d, y, h:mm a'}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+        <div fxFlex="100" fxLayoutAlign="start start">
+          <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item,$event)'
+            (color)='setColor(item,$event)'></app-icon>
+        </div>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

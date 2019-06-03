@@ -27,6 +27,8 @@ import { DialogBoxComponent } from './component/dialog-box/dialog-box.component'
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GetAllLableComponent } from './component/get-all-lable/get-all-lable.component';
+import { SearchComponent } from './component/search/search.component';
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { GetAllLableComponent } from './component/get-all-lable/get-all-lable.co
     DialogBoxComponent,
     EditLabelComponent,
     GetAllLableComponent,
-
+    SearchComponent,
+  
     
   ],
   imports: [

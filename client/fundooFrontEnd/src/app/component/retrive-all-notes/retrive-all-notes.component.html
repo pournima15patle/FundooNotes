@@ -28,7 +28,7 @@
         </div>
 
         <div fxFlex="100" fxLayoutAlign="start start">
-          <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item,$event)'
+          <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item ,$event)'
             (color)='setColor(item,$event)'></app-icon>
         </div>
       </div>
@@ -38,12 +38,10 @@
 
 </div>
 
-<!-- ********************************************************************************** -->
+<!-- *************************************************************************************** -->
 
 <div *ngIf='gridView==false' fxLayout="column wrap">
   <div *ngFor='let item of notes' fxLayoutAlign="center " fxLayout.xs="row" fxFlex="30" fxLayoutGap="%">
-
-
 
     <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:10px;"
       fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="65" fxFlexOffset.xl="10" mat-raised-button>

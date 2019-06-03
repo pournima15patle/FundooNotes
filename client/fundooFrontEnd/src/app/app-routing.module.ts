@@ -10,6 +10,7 @@ import { ArchiveComponent } from './component/archive/archive.component';
 import { ReminderComponent } from './component/reminder/reminder.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { RetriveAllNotesComponent } from './component/retrive-all-notes/retrive-all-notes.component';
+import { SearchComponent } from './component/search/search.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
         component:AddNoteComponent
       },
       {
+        path:'search',
+        component:SearchComponent
+      },
+      {
         path:'getAllNotes',
         component:RetriveAllNotesComponent
       },
@@ -59,6 +64,10 @@ const routes: Routes = [
       {
         path:'reminder',
         component:ReminderComponent
+      },
+      {
+        path:'retriveAllNotes',
+        component:RetriveAllNotesComponent
       },
       {
         path:'trash',

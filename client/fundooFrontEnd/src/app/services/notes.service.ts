@@ -41,6 +41,17 @@ export class NotesService {
     return this.http.postgetNoteForArchive(data)
   }
 
+  getNoteForTrash(obj){
+    console.log("getAllArchive in note service ",obj);
+    
+    const token = localStorage.getItem('access_token');
+    const data={
+      tkn :token,
+      body:obj
+    }
+    return this.http.postgetNoteForTrash(data)
+  }
+
   updateNote(requestBody) {
     const reqbody = {
       
@@ -88,5 +99,19 @@ export class NotesService {
       body:data
     }
     return this.http.postSetArchive(reqbody)
+  }
+
+  setTrash(data){
+    const reqbody={
+      body:data
+    }
+    return this.http.postSetTrash(reqbody)
+  }
+
+  searchNote(data){
+    const reqbody={
+      body:data
+    }
+    return this.http.postSearchNote(reqbody)
   }
 }

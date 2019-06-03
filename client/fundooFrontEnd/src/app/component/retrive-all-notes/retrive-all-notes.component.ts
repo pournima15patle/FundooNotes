@@ -46,7 +46,6 @@ export class RetriveAllNotesComponent implements OnInit {
   }
 
 
- 
   openDialogbox(item): void {
     console.log("this is item", item)
     const dialogRef = this.dialog.open(DialogBoxComponent, {

@@ -101,6 +101,25 @@ export class IconComponent implements OnInit {
       }
     )
   }
+
+  isTrash(){
+    this.model={
+      id:this.noteData.id,
+      isTrash:this.flag=true,
+    }
+
+    this.note.setTrash(this.model).subscribe(
+      data => {
+        console.log("data with set trash: ", data);
+        //this.snackBar.open('Register successfully' ,'EndNow',{duration: 3000});
+        
+      },
+      error => {
+       console.log("error with set trash:", error);
+       //this.snackBar.open('Register failed' ,'EndNow',{duration: 3000});
+      }
+    )
+  }
 }
 
 

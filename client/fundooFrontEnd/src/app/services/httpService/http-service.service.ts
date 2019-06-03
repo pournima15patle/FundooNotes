@@ -82,6 +82,22 @@ export class HttpServiceService {
     return this.http.get(this.baseUrl2+'getNotes', options.body);
   }
 /******************************************************************************************************** */
+
+postgetNoteForTrash(options){
+  console.log("gelAllNotes for archive in http service",options);
+  
+  const httpOptions={
+    headers:new HttpHeaders({
+      'Authorization':localStorage.getItem('access_token')
+    })
+  };
+  console.log("tokens: ", localStorage.getItem('access_token'));
+  
+  console.log("options for get all notes in trash" , options);
+  return this.http.get(this.baseUrl2+'getNotes', options.body);
+}
+
+/********************************************************************************************************** */
   postUpdateNote(options){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -142,4 +158,30 @@ export class HttpServiceService {
     };
     return this.http.post(this.baseUrl2+'archive' , options.body,httpOptions);
   }
+
+  postSetTrash(options){
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token')
+      })
+    };
+    return this.http.post(this.baseUrl2+'trash' , options.body,httpOptions);
+  }
+
+  postSearchNote(options){
+    console.log("fd",options);
+    var data=options.body.search;
+    console.log("search data",data);
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token'),
+      search:data
+      })
+    };
+    
+    return this.http.get(this.baseUrl2+'searchNotes',httpOptions);
+  
+  }
 }
+

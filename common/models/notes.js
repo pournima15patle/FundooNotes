@@ -101,7 +101,7 @@ module.exports = async function (Notes) {
         }
 
         console.log("info", info.noteId);
-        if ( data.id == null && data.reminder == null) {
+        if (data.id == null && data.reminder == null) {
 
             console.log("Enter details is not valid");
             cb(null, "Enter details is not valid")
@@ -134,77 +134,77 @@ module.exports = async function (Notes) {
             arg: 'result',
             type: 'string'
         }
-    });  
+    });
 
 
-    /**
- * @Purpose : To change the color of notes by using Id
- */
+    /***************************************************************************************************
+     * @Purpose : To change the color of notes by using Id
+     ****************************************************************************************************/
 
-Notes.color = function (data, req, cb) {
-    console.log("data",data);
-    
-    try {
-        if (typeof data.id === 'undefined') {
-            throw new Error('ID is missing');
-        }
-        if (typeof data.color === 'undefined') {
-            throw new Error('Action is undefined');
-        }
+    Notes.color = function (data, req, cb) {
+        console.log("data", data);
 
-        var info = {
-            "id": data.id,
-            "color": data.color
-        }
-        console.log("note id",info);
-        
-        if (req.currentUser != null && data.id != null && data.color != null) {
-            cb(null, "user is not authenticate")
-        } else {
+        try {
+            if (typeof data.id === 'undefined') {
+                throw new Error('ID is missing');
+            }
+            if (typeof data.color === 'undefined') {
+                throw new Error('Action is undefined');
+            }
 
-            // console.log("request: ", isTrash, id);
-            // if (typeof data.isTrash === "boolean") {
+            var info = {
+                "id": data.id,
+                "color": data.color
+            }
+            console.log("note id", info);
 
-            Notes.updateAll({ _id: info.id }, { color: info.color }, function (err, data) {
-                if (err) {
-                    cb(err)
-                } else {
-                    var response = "Successfully removed";
-                    cb(null, data);
-                    // console.log(response);
-                }
-            });
-            // } 
-            // else {
-            // cb("Give Boolean input true/false")
-            // }
-        }
-    } catch (e) {
-        console.error('Error: ', e);
-        if (e instanceof AssertionError
-            || e instanceof RangeError
-            || e instanceof ReferenceError
-            || e instanceof SyntaxError
-            || e instanceof SystemError
-            || e instanceof TypeError) {
-            return cb('Something bad happened!');
-        } else {
-            return cb(e.message);
+            if (req.currentUser != null && data.id != null && data.color != null) {
+                cb(null, "user is not authenticate")
+            } else {
+
+                // console.log("request: ", isTrash, id);
+                // if (typeof data.isTrash === "boolean") {
+
+                Notes.updateAll({ _id: info.id }, { color: info.color }, function (err, data) {
+                    if (err) {
+                        cb(err)
+                    } else {
+                        var response = "Successfully removed";
+                        cb(null, data);
+                        // console.log(response);
+                    }
+                });
+                // } 
+                // else {
+                // cb("Give Boolean input true/false")
+                // }
+            }
+        } catch (e) {
+            console.error('Error: ', e);
+            if (e instanceof AssertionError
+                || e instanceof RangeError
+                || e instanceof ReferenceError
+                || e instanceof SyntaxError
+                || e instanceof SystemError
+                || e instanceof TypeError) {
+                return cb('Something bad happened!');
+            } else {
+                return cb(e.message);
+            }
         }
     }
-}
 
-Notes.remoteMethod(
-    'color',
-    {
-        http: { path: '/color', verb: 'post' },
-        accepts: [{
-            arg: 'data', type: 'object', http: { source: 'body' },
-            "description": 'Requred UserId,NoteId and Set color', "required": true
-        },
-        { "arg": 'req', "type": 'object', "http": { "source": 'req' } }],
-        returns: { arg: 'result', type: 'string' }
-    });
+    Notes.remoteMethod(
+        'color',
+        {
+            http: { path: '/color', verb: 'post' },
+            accepts: [{
+                arg: 'data', type: 'object', http: { source: 'body' },
+                "description": 'Requred UserId,NoteId and Set color', "required": true
+            },
+            { "arg": 'req', "type": 'object', "http": { "source": 'req' } }],
+            returns: { arg: 'result', type: 'string' }
+        });
 
 
     /**********************************************TRASH*****************************************
@@ -315,6 +315,48 @@ Notes.remoteMethod(
         returns: { arg: 'data', type: 'string' },
         http: { path: '/searchNotes', verb: 'get' }
     });
+    // Notes.search = function (result, cb) {
+    //     console.log("result",result);
+        
+    //     try{
+            
+    //         if (typeof result.params.search === 'undefined') {
+    //             throw new Error('Search data is undefined');
+    //         }
+    //         var data = result.params.search;
+    //         /* case-insensitive RegExp search */
+    //         var pattern = new RegExp('.*' + data + '.*', "i");
+    //         Notes.find({ where: { userId: result.currentUser } }, { where: { or: [{ title: { like: pattern } }, { description: { like: pattern } }] } }, function (err, data) { /* ... */
+    //             if (err) {
+    //                 cb(err);
+    //             } else {
+    //                 cb(null, data);
+    //             }
+    //         });
+    //     }
+
+    //     catch (e) {
+    //         console.error('Error: ', e);
+    //         if (
+    //             e instanceof RangeError
+    //             || e instanceof ReferenceError
+    //             || e instanceof SyntaxError
+    //             || e instanceof SystemError
+    //             || e instanceof TypeError) {
+    //             return cb('Something bad happened!');
+    //         } else {
+    //             return cb(e.message);
+    //         }
+
+    //     }
+    // }
+    // Notes.remoteMethod('search', {
+    //     http: { path: '/search/:search', verb: 'get' },
+    //     'accepts': [
+    //         { "arg": 'req', "type": 'object', "http": { "source": 'req' } }
+    //     ],
+    //     returns: { arg: 'data', type: 'array' }
+    // });
 
     /******************************************************************************
      * 
@@ -402,7 +444,7 @@ Notes.remoteMethod(
         }
     });
 
-    
+
 };
 // accept: [{ arg: 'data', type: 'object', http: { source: 'body' },
 //  "description": 'noteId type :string,isTrash type:boolean in body ', "required": true },

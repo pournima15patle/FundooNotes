@@ -1,72 +1,70 @@
-<div fxFlex="10" fxLayout="row" fxFlex="auto"  fxFlex.xs="100"  [style.fontSize.px]="1" fxLayoutGap="-7px">
+<div fxFlex="10" fxLayout="row" fxFlex="auto" fxFlex.xs="100" [style.fontSize.px]="1" fxLayoutGap="-7px">
 
-    <div fxLayoutAlign="start end"  fxLayout="row" fxFlex="50">
-        <button
-        id="Remaind"
-        matTooltip="Remind me"
-        mat-icon-button
-        [matMenuTriggerFor]="remindme"
-        >
+        <div fxLayoutAlign="start end" fxLayout="row" fxFlex="50">
+                <button id="Remaind" matTooltip="Remind me" mat-icon-button [matMenuTriggerFor]="remindme">
 
-        <button mat-icon-button>
-                <mat-icon> add_alert</mat-icon>
-            </button>
-        <!-- <mat-icon>
+                        <button mat-icon-button>
+                                <mat-icon> add_alert</mat-icon>
+                        </button>
+                        <!-- <mat-icon>
         <img src="../../../assets/images/outline-notification_important-24px.svg"
         /></mat-icon> -->
-        </button>
-        
-        <mat-menu #remindme="matMenu" class="matmenu" (click)="todayDate">
-        <div class="remaindMenu">
-       
-        <button mat-button (click)="todayDate()" >
-         <mat-list-item >
-           <p >Today Date</p>
-        </mat-list-item>
-        </button>
+                </button>
 
-        <button mat-button (click)="tomarrowDate()" >
-                <mat-list-item >
-                  <p >Tomarrow Date</p>
-               </mat-list-item>
-               </button>
+                <mat-menu #remindme="matMenu" class="matmenu" (click)="todayDate">
+                        <div class="remaindMenu">
 
-               
-        <button mat-button (click)="nextWeek()" >
-                <mat-list-item >
-                  <p >Next Week</p>
-               </mat-list-item>
-               </button>
+                                <button mat-button (click)="todayDate()">
+                                        <mat-list-item>
+                                                <p>Today Date</p>
+                                        </mat-list-item>
+                                </button>
 
-      
+                                <button mat-button (click)="tomarrowDate()">
+                                        <mat-list-item>
+                                                <p>Tomarrow Date</p>
+                                        </mat-list-item>
+                                </button>
+
+
+                                <button mat-button (click)="nextWeek()">
+                                        <mat-list-item>
+                                                <p>Next Week</p>
+                                        </mat-list-item>
+                                </button>
+
+
+                        </div>
+                </mat-menu>
+
+                <button mat-icon-button>
+                        <mat-icon>person_add</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="colorplatte">
+                        <mat-icon> color_lens</mat-icon>
+                </button>
+
+                <mat-menu #colorplatte="matMenu">
+                        <div fxLayout="row" fxLayoutAlign=" start" *ngFor='let color of colorArray'>
+                                <div *ngFor='let notecolors of color'>
+                                        <button [ngStyle]="{'background-color':notecolors.hexcode}"
+                                                (click)="setColor(notecolors.hexcode)" mat-mini-fab>
+                                        </button>
+                                </div>
+                        </div>
+                </mat-menu>
+
+                <button mat-icon-button>
+                        <mat-icon> insert_photo</mat-icon>
+                </button>
+                <button mat-icon-button (click)="isArchive()">
+                        <mat-icon> archive</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="menu" >
+                        <mat-icon> more_vert</mat-icon>
+                        <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="isTrash()">Delete Note</button>
+                        </mat-menu>
+                </button>
+
         </div>
-        </mat-menu>
-
-    <button mat-icon-button >
-            <mat-icon >person_add</mat-icon>
-    </button>
-    <button mat-icon-button [matMenuTriggerFor]="colorplatte"  >
-            <mat-icon > color_lens</mat-icon>
-    </button>
-
-    <mat-menu #colorplatte="matMenu">
-                <div fxLayout="row" fxLayoutAlign=" start" *ngFor='let color of colorArray'>
-                <div *ngFor='let notecolors of color'>
-                <button [ngStyle]="{'background-color':notecolors.hexcode}" (click)="setColor(notecolors.hexcode)"
-                mat-mini-fab>
-         </button>
-                </div>
-                </div>
-                </mat-menu>      
-           
-    <button mat-icon-button>
-            <mat-icon> insert_photo</mat-icon>
-    </button>
-    <button mat-icon-button (click)="isArchive()">
-            <mat-icon> archive</mat-icon>
-    </button>
-    <button mat-icon-button>
-            <mat-icon> more_vert</mat-icon>
-    </button>
-  
-</div>    

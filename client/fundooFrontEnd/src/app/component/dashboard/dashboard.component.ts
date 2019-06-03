@@ -3,9 +3,11 @@ import { MatDialog } from '@angular/material';
 import { EditLabelComponent } from '../edit-label/edit-label.component';
 import { ArchiveComponent } from '../archive/archive.component';
 import { GridServiceService } from '../../services/grid-service.service';
-import {DOCUMENT} from '@angular/common'
+import { DOCUMENT } from '@angular/common'
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,78 +15,107 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-message:string="FundooNotes"
-gridView:boolean;
-
+  message: string = "FundooNotes"
+  gridView: boolean;
+  value: any;
+  model:any;
+  private messageSource = new BehaviorSubject([]);
+  currentMessage = this.messageSource.asObservable();
+  data: any[];
   constructor(
-    @Inject(DOCUMENT) private document:any,
-    private dialog:MatDialog,
-    private view:GridServiceService,
-    private router: Router
+    @Inject(DOCUMENT) private document: any,
+    private dialog: MatDialog,
+    private view: GridServiceService,
+    private router: Router,
+    private note:NotesService
   ) { }
 
   ngOnInit() {
     this.viewUpdate();
   }
 
-  viewUpdate()
-{
-this.view.currentView.subscribe(
-response=>this.gridView=response
-);
-}
+  viewUpdate() {
+    this.view.currentView.subscribe(
+      response => this.gridView = response
+    );
+  }
 
-islist;
-isClicked;
-changeView(){
-console.log("this is changeview",this.gridView);
-this.view.changeGridView();
-this.viewUpdate();
-}
+  islist;
+  isClicked;
+  changeView() {
+    console.log("this is changeview", this.gridView);
+    this.view.changeGridView();
+    this.viewUpdate();
+  }
 
-  refresh(){
+  refresh() {
     window.location.reload();
   }
 
-  
-  changeview(){
-    this.gridView = !this.gridView;
+  onEnter(value: string) {
+    this.value = value;
+    this.model = {
+     "search":this.value
+    }
+    console.log("search",this.model);
+    this.note.searchNote(this.model).subscribe(
+      (response:any)=>{
+        console.log("search  note",response);
+        this.data=response['data'];
+        console.log("asdfghhj",this.data);
+        this.messageSource.next(this.data);
+      }
+    )
+      error=>{
+        console.log("error in search note",error);
+        
+      }
+     
+      this.router.navigate(['dashboard', 'search']);
   }
+  
+  // changeView(){
+  //   this.gridView = !this.gridView;
+  // }
 
-  go2UrlHelp(){
+  go2UrlHelp() {
     this.document.location.href = 'https://support.google.com/keep/#topic=6262468';
   }
 
-  labelDialog(){
-   
+  labelDialog() {
+
     const dialogRef = this.dialog.open(EditLabelComponent, {
-      
+
       width: '300px',
       data: {}
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The laabel dialog was closed',result);
-      
+      console.log('The laabel dialog was closed', result);
+
     });
   }
 
-  archiveDialog(){
-    const archiveRef=this.dialog.open(ArchiveComponent,{
-      width:'300px',
-      data:{}
+  archiveDialog() {
+    const archiveRef = this.dialog.open(ArchiveComponent, {
+      width: '300px',
+      data: {}
     });
     archiveRef.afterClosed().subscribe(result => {
-      console.log('The notes archive',result);
-      
+      console.log('The notes archive', result);
+
     });
   }
-  
-  archive(){
-    this.router.navigate(['dashboard','archive']);
+
+  archive() {
+    this.router.navigate(['dashboard', 'archive']);
   }
 
-  retriveAllNotes(){
-    this.router.navigate(['dashboard','archive']);
+  trash() {
+    this.router.navigate(['dashboard', 'trash'])
+  }
+
+  retriveAllNotes() {
+    this.router.navigate(['dashboard', 'retriveAllNotes']);
   }
 }
