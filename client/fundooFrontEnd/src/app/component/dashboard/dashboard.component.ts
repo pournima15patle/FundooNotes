@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   private messageSource = new BehaviorSubject([]);
   currentMessage = this.messageSource.asObservable();
   data: any[];
+  dialogRef: any;
   constructor(
     @Inject(DOCUMENT) private document: any,
     private dialog: MatDialog,
@@ -51,6 +52,8 @@ export class DashboardComponent implements OnInit {
   refresh() {
     window.location.reload();
   }
+
+  
 
   onEnter(value: string) {
     this.value = value;

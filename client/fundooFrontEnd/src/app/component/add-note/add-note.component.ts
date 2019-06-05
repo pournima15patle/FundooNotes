@@ -17,6 +17,7 @@ export class AddNoteComponent implements OnInit {
   model: any;
   title = new FormControl('', [Validators.required])
   discription = new FormControl('', [Validators.required])
+  dialogRef: any;
 
   constructor(private notes: NotesService, 
     private activeRoute: ActivatedRoute,
@@ -30,6 +31,10 @@ export class AddNoteComponent implements OnInit {
   }
   refresh(): void {
     window.location.reload();
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
     
   createnote() {

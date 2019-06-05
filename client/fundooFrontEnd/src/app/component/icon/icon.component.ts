@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NotesService } from '../../services/notes.service';
+
 import { SelectControlValueAccessor } from '@angular/forms';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-icon',
@@ -13,7 +14,7 @@ export class IconComponent implements OnInit {
   @Output() color=new EventEmitter();
   model: any
   flag=false
-  constructor(private note: NotesService) { }
+  constructor(private note:NotesService) { }
 
   ngOnInit() {
   
@@ -61,19 +62,19 @@ export class IconComponent implements OnInit {
   colorArray = [
     [
       { name: "white", hexcode: "#ffffff" },
-      { name: "lightGreen", hexcode: "#90ee90" },
+      { name: "darkGreen", hexcode: "#006400" },
       { name: "purple", hexcode: "#800080" },
-      { name: "red", hexcode: "#ff0000" },
+      { name: "red", hexcode: "#DC143C" },
     ],
     [
       { name: "Teal", hexcode: "#008080" },
-      { name: "pink", hexcode: "#ffc0cb" },
-      { name: "orange", hexcode: "#ffa500" },
+      { name: "deepPink", hexcode: "#FF1493" },
+      { name: "orange", hexcode: "#FF4500" },
       { name: "blue", hexcode: "#0000ff" },
     ],
     [
       { name: "brown", hexcode: "#a52a2a" },
-      { name: "yellow", hexcode: "#ffff00" },
+      { name: "deepSkyBlue", hexcode: "#00BFFF" },
       { name: "darkBlue", hexcode: "#00008b" },
       { name: "gray", hexcode: "#808080" }
     ]

@@ -1,5 +1,4 @@
-<div 
-     >
+<div >
      <button mat-raised-button ></button>
      <div (click)="openDialog(item)">
       <div fxLayout="column" fxLayoutGap="5%">
@@ -13,11 +12,11 @@
           <input matInput  placeholder="Take a note..." [(formControl)]="discription">
       </div>
     </div>
-      <div fxLayout="row" fxLayoutGap="40">
-     <div fxLayoutGap="40">   <app-icon></app-icon><div></div>
+      <div fxLayout="row" fxLayoutGap="40" fxLayoutGap="12%">
+      <app-icon></app-icon><div></div>
             <!-- <button mat-raised-button (click)="updateNote()"(click)="onNoClick()" matTooltip="close">Close</button> -->
             <button mat-button [mat-dialog-close] (click)="updateNote()"(click)="onNoClick()">Close</button>
-          </div>
+         
       </div>
     </div>
   
