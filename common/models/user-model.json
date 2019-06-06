@@ -13,10 +13,6 @@
     "lastName": {
       "type": "string",
       "required": true
-    },
-    "city": {
-      "type": "string",
-      "required": false
     }
   },
   "validations": [],
@@ -36,9 +32,9 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "DENY"
-    }
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+      }
   ],
   "methods": {}
 }

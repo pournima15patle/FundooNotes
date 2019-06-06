@@ -28,6 +28,7 @@ import { EditLabelComponent } from './component/edit-label/edit-label.component'
 import { AppRoutingModule } from './app-routing.module';
 import { GetAllLableComponent } from './component/get-all-lable/get-all-lable.component';
 import { SearchComponent } from './component/search/search.component';
+import { SetProfileComponent } from './component/set-profile/set-profile.component';
 
 
 
@@ -50,6 +51,7 @@ import { SearchComponent } from './component/search/search.component';
     EditLabelComponent,
     GetAllLableComponent,
     SearchComponent,
+    SetProfileComponent,
   
     
   ],

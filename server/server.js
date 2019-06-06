@@ -34,4 +34,17 @@ var redis = require('redis');
 var client = redis.createClient();
 client.on('connect', () => {
   console.log('connected to redis');
+
+app.use(loopback.token())
+app.use(function (req, res, next) {
+app.currentUser = null;
+// console.log(req.accessToken);
+if (!req.accessToken) return next();
+req.accessToken.user(function (err, userId) {
+if (err) return next(err);
+// console.log(userId);
+req.currentUser = req.accessToken.userId;
+next();
+});
+});
 });

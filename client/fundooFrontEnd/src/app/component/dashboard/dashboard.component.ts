@@ -121,4 +121,8 @@ export class DashboardComponent implements OnInit {
   retriveAllNotes() {
     this.router.navigate(['dashboard', 'retriveAllNotes']);
   }
+
+  logout(){
+    localStorage.clear();
+  }
 }

@@ -1,23 +1,23 @@
-<div >
-  <div >
-<mat-toolbar >
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon matTooltip="Main Menu">menu</mat-icon>
-  </button>
+<div>
+  <div>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon matTooltip="Main Menu">menu</mat-icon>
+      </button>
 
-  <div fxFlex="2">
-    <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="Welcome to Fundoo Notes">
-      <img id="google-keep-logo" src="../../../assets/img/keep.png" />
+      <div fxFlex="2">
+        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="Welcome to Fundoo Notes">
+          <img id="google-keep-logo" src="../../../assets/img/keep.png" />
 
-      <h3 class="example-app-name" fxLayoutAlign="center center">
-        <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="end center">
-          <span>{{message}}</span>
-        </mat-card-title>
-      </h3>
-    </div>
-  </div>
+          <h3 class="example-app-name" fxLayoutAlign="center center">
+            <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="end center">
+              <span>{{message}}</span>
+            </mat-card-title>
+          </h3>
+        </div>
+      </div>
 
-  <!-- <div class="right">
+      <!-- <div class="right">
       <form id="search">
          
         <input #search type="search" placeholder="Search" [ngClass]="{'filled':filled}" 
@@ -25,128 +25,148 @@
       </form>
     </div> -->
 
-  <!-- ***************************************************************************** -->  
-  <div fxFlex="60" fxLayoutAlign="end start">
-    <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
-      <button mat-icon-button class="search-button">
-        <mat-icon matTooltip="Search">search</mat-icon>
-      </button>
-      <input fxFlex="90" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search" [style.fontSize.px]="16"
-        class="search-window" autocomplete="off" />
-        <p>{{value}}</p>
-    </mat-form-field>
-  </div>
-
-  <div fxFlex="25"  fxLayoutAlign="end start" fxLayoutGap="10px">
-  <div >
-    <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
-      <mat-icon>refresh</mat-icon>
-    </button>
-  </div>
-<!-- ***************************************************************************** -->
-<div fxFlex="25"  fxLayoutAlign="end start">
-  <button mat-icon-button color="basic" id="grid" fxHide.xs>
-    <mat-icon>
-      <img *ngIf="gridView" (click)="changeView()" matTooltip="List view"
-        src="../../../assets/img/outline-view_agenda-24px.svg" />
-      <img isClicked *ngIf="!gridView" (click)="changeView()" matTooltip="Grid view"
-        src="../../../assets/img/outline-border_all-24px.svg" /></mat-icon>
-  </button>
-</div>
-<div>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-     <img  src="../../../assets/img/outline-settings-24px.svg" />
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-     
-        <span>Settings</span>
-      </button>
-      <button mat-menu-item >
-        <span>Send Feedback</span>
-      </button>
-      <button mat-menu-item (click)="go2UrlHelp()">
-        <span>Help</span>
-      </button>
-      <button mat-menu-item>
-         <span>App Downloads</span>
-      </button>
-      <button mat-menu-item>
-          <span>Keyboard Shorcuts</span>
-      </button>
-    </mat-menu>
-  </div>
-</div>
-</mat-toolbar>
-</div>
-
-<mat-sidenav-container class="container" style="height:100vh;">
-    <mat-sidenav #sidenav mode="side" >
-     
-
-     
-    <mat-nav-list >
-      <button mat-button (click)="retriveAllNotes()" >
-       <div fxLayout="row" fxLayoutGap="30px">
-          <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
-              <img  src="../../../assets/img/note.svg" /></div>
-         <mat-list-item>Notes</mat-list-item>
-      </div> 
-    </button>
-   </mat-nav-list>  
-   <mat-nav-list >
-    <button mat-button >
-      <div fxLayout="row" fxLayoutGap="30px">
-          <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
-              <img  src="../../../assets/img/remainder.svg" /></div>
-          <mat-list-item>Reminders</mat-list-item>
-      </div>
-    </button>
-  </mat-nav-list>  
-
-  <mat-divider></mat-divider>
-    
-    <mat-nav-list>
-       
-      <div class= "lable">LABELS</div>
-        <app-get-all-lable></app-get-all-lable>
-    </mat-nav-list>
-    <mat-nav-list>
-        <button mat-button  >
-        <div fxLayout="row" fxLayoutGap="30px">
-            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
-                <img  src="../../../assets/img/outline-create-24px.svg" /></div>
-            <mat-list-item mat-raised-button (click) ="labelDialog()" >Edit lables</mat-list-item>
-        </div>
-        </button> 
-    </mat-nav-list> 
-
-    <mat-divider></mat-divider>
-    <mat-nav-list >
-        <button mat-button (click) ="archive()" >
-        <div fxLayout="row" fxLayoutGap="30px">
-            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" >
-                <img  src="../../../assets/img/archieve.svg" /></div>
-           <mat-list-item mat-raised-button (click) ="archive()">Archive</mat-list-item>
-          </div> 
+      <!-- ***************************************************************************** -->
+      <div fxFlex="60" fxLayoutAlign="end start">
+        <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
+          <button mat-icon-button class="search-button">
+            <mat-icon matTooltip="Search">search</mat-icon>
           </button>
-    </mat-nav-list>
-    <mat-nav-list >
-        <button mat-button (click)="trash()" >
-        <div fxLayout="row" fxLayoutGap="30%" >
-          <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
-                <img  src="../../../assets/img/bin.svg" /></div>
-           <mat-list-item>Trash</mat-list-item>
-            </div>
+          <input fxFlex="90" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search"
+            [style.fontSize.px]="16" class="search-window" autocomplete="off" />
+          <p>{{value}}</p>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="25" fxLayoutAlign="end start" fxLayoutGap="10px">
+        <div>
+          <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+        <!-- ***************************************************************************** -->
+        <div fxFlex="25" fxLayoutAlign="end start">
+          <button mat-icon-button color="basic" id="grid" fxHide.xs>
+            <mat-icon>
+              <img *ngIf="gridView" (click)="changeView()" matTooltip="List view"
+                src="../../../assets/img/outline-view_agenda-24px.svg" />
+              <img isClicked *ngIf="!gridView" (click)="changeView()" matTooltip="Grid view"
+                src="../../../assets/img/outline-border_all-24px.svg" /></mat-icon>
+          </button>
+        </div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <img src="../../../assets/img/outline-settings-24px.svg" />
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+
+              <span>Settings</span>
             </button>
-       </mat-nav-list>
+            <button mat-menu-item>
+              <span>Send Feedback</span>
+            </button>
+            <button mat-menu-item (click)="go2UrlHelp()">
+              <span>Help</span>
+            </button>
+            <button mat-menu-item>
+              <span>App Downloads</span>
+            </button>
+            <button mat-menu-item>
+              <span>Keyboard Shorcuts</span>
+            </button>
+          </mat-menu>
+        </div>
+
+          <div>
+         <mat-menu class="menu" #menu="matMenu"> 
+
+          <div>
+          <mat-card-header>
+          <div mat-card-avatar
+          [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'60px','width':'60px'}"
+          class="img2" (click)=image.click()>
+          </div>
+          <mat-card-title>{{firstName}} {{lastName}}</mat-card-title>
+          <mat-card-subtitle>{{email}}</mat-card-subtitle>
+          </mat-card-header><br>
+          <mat-divider></mat-divider>
+          <div fxLayoutAlign="end end">
+          <input type="file" class="fileSelect" (change)=profileImage($event) #image>
+          <button mat-flat-button color="warn" routerLink="/login" (click)="logout()">Sign out</button>
+          </div>
+          </div>
+          
+        </mat-menu>
+      </div>
+      </div>
+    </mat-toolbar>
+  </div>
+
+  <mat-sidenav-container class="container" style="height:100vh;">
+    <mat-sidenav #sidenav mode="side">
+
+
+
+      <mat-nav-list>
+        <button mat-raised-button (click)="retriveAllNotes()">
+          <div fxLayout="row" fxLayoutGap="30px">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/note.svg" /></div>
+            <mat-list-item>Notes</mat-list-item>
+          </div>
+        </button>
+      </mat-nav-list>
+      <mat-nav-list>
+        <button mat-raised-button>
+          <div fxLayout="row" fxLayoutGap="30px">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/remainder.svg" /></div>
+            <mat-list-item>Reminders</mat-list-item>
+          </div>
+        </button>
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+
+      <mat-nav-list>
+
+        <div class="lable">LABELS</div>
+        <app-get-all-lable></app-get-all-lable>
+      </mat-nav-list>
+      <mat-nav-list>
+        <button mat-raised-button>
+          <div fxLayout="row" fxLayoutGap="30px">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/outline-create-24px.svg" /></div>
+            <mat-list-item mat-raised-button (click)="labelDialog()">Edit lables</mat-list-item>
+          </div>
+        </button>
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <button mat-raised-button (click)="archive()">
+          <div fxLayout="row" fxLayoutGap="30px">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/archieve.svg" /></div>
+            <mat-list-item mat-raised-button (click)="archive()">Archive</mat-list-item>
+          </div>
+        </button>
+      </mat-nav-list>
+      <mat-nav-list>
+        <button mat-raised-button (click)="trash()">
+          <div fxLayout="row" fxLayoutGap="30%">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/bin.svg" /></div>
+            <mat-list-item>Trash</mat-list-item>
+          </div>
+        </button>
+      </mat-nav-list>
 
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
       <router-outlet></router-outlet>
 
     </mat-sidenav-content>
-</mat-sidenav-container >
+  </mat-sidenav-container>
 </div>
-
-

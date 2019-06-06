@@ -23,7 +23,7 @@ module.exports = function (fileUpload) {
           acl: 'public-read',
           metadata: function (req, file, cb) {
             cb(null, {fieldName: file.fieldname});
-            console.log('file:',file);
+            //console.log('request file:',req);
             
           },
           key: function (req, file, cb) {
@@ -33,8 +33,10 @@ module.exports = function (fileUpload) {
       }).array('file', 12);
      
     fileUpload.upload = function (req, res,file, cb) {
+        //console.log("res",req);
         
        upload(req, res, function (err) {
+        console.log("responce",req.files[0].location);
             if (err) {
                 // An error occurred when uploading
                 res.json(err);
@@ -45,7 +47,7 @@ module.exports = function (fileUpload) {
               //  console.log("fhgf",req);
                 var file="https://myfundoobucket.s3.ap-south-1.amazonaws.com/"
                // console.log('request', req);
-                cb(null,'image'+Date.now().toString()+'jpeg');
+                cb(null,req.files[0].location);
             }
            
             

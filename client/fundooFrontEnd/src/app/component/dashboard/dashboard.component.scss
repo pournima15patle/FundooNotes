@@ -31,3 +31,19 @@
 #grid{
   margin-left: -270px;
 }
+
+
+.mat-raised-button:hover {
+  background-color: rgba(241, 240, 176, 0.671);
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  }
+  .mat-raised-button:focus {
+  background-color: bisque;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 11px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  }

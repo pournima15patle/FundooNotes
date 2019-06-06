@@ -158,7 +158,7 @@ module.exports = async function (Notes) {
             }
             console.log("note id", info);
 
-            if (req.currentUser != null && data.id != null && data.color != null) {
+            if (req.currentUser != data.userId && data.id != null && data.color != null) {
                 cb(null, "user is not authenticate")
             } else {
 
