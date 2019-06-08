@@ -30,6 +30,8 @@ import { GetAllLableComponent } from './component/get-all-lable/get-all-lable.co
 import { SearchComponent } from './component/search/search.component';
 import { SetProfileComponent } from './component/set-profile/set-profile.component';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { AttachLabelComponent } from './component/attach-label/attach-label.component';
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { SetProfileComponent } from './component/set-profile/set-profile.compone
     GetAllLableComponent,
     SearchComponent,
     SetProfileComponent,
+    AttachLabelComponent,
   
     
   ],
@@ -62,11 +65,11 @@ import { SetProfileComponent } from './component/set-profile/set-profile.compone
     BrowserAnimationsModule,
     HttpClientModule,MatSidenavModule,
     MatToolbarModule,MatDialogModule,
-
+    ImageCropperModule
    
   ],
   providers: [HttpServiceService,UserService],
-  entryComponents:[DialogBoxComponent,EditLabelComponent],
+  entryComponents:[DialogBoxComponent,EditLabelComponent,SetProfileComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

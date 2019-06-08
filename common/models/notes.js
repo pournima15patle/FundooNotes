@@ -225,6 +225,7 @@ module.exports = async function (Notes) {
 
         });
     }
+
     Notes.remoteMethod(
         'trash',
         {
@@ -315,7 +316,7 @@ module.exports = async function (Notes) {
         returns: { arg: 'data', type: 'string' },
         http: { path: '/searchNotes', verb: 'get' }
     });
-    // Notes.search = function (result, cb) {
+    // Notes.searchNotes = function (result, cb) {
     //     console.log("result",result);
         
     //     try{

@@ -35,10 +35,15 @@ export class LoginComponent implements OnInit {
 
     this.user.login(this.model).subscribe(
       (data:any) => {
-        console.log("data after login: ", data);
+        console.log("data after login: ", data.firstName);
+      
        
         localStorage.setItem('access_token',data.id);
         localStorage.setItem('userid',data.userId);
+        localStorage.setItem('firstName',data.firstName);
+        localStorage.setItem('lastName',data.lastName);
+        localStorage.setItem('email',data.email);
+        localStorage.setItem('Profile',data.Profile);
         this.route.navigate(['dashboard'])
        
         this.snackBar.open('login successfully' ,'EndNow',{duration: 3000});

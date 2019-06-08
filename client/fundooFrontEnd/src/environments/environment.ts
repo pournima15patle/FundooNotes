@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   baseUrl:'http://localhost:3000/api/userModels/',
   baseUrl2:'http://localhost:3000/api/notes/',
-  baseUrl3:'http://localhost:3000/api/labels/'
+  baseUrl3:'http://localhost:3000/api/labels/',
+  url:'http://localhost:3000'
 };
 
 /*

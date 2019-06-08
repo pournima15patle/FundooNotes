@@ -64,6 +64,12 @@
                         <mat-icon> more_vert</mat-icon>
                         <mat-menu #menu="matMenu">
                                 <button mat-menu-item (click)="isTrash()">Delete Note</button>
+                                <button mat-menu-item  [matMenuTriggerFor]="menu1">Add Label</button>
+                                <mat-menu #menu1="matMenu" style="width:50px">
+                                        <div>Label Notes</div>
+                                        <mat-divider></mat-divider><br>
+                                        <app-attach-label></app-attach-label>
+                                </mat-menu>
                         </mat-menu>
                 </button>
 

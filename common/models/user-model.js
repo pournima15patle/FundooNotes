@@ -68,9 +68,10 @@ module.exports = function (Usermodel) {
     console.log("datadata", ctx.result.userId);
     user.find({ where: { id: ctx.result.userId } }, function (err, data) {
       // console.log("dsafd",data);
-      ctx.result.firstName = data[0].firstName,
+        ctx.result.firstName = data[0].firstName,
         ctx.result.lastName = data[0].lastName,
-        ctx.result.email = data[0].email
+        ctx.result.email = data[0].email,
+        ctx.result.Profile = data[0].Profile
       next();
     })
   })
@@ -102,7 +103,7 @@ module.exports = function (Usermodel) {
 
       },
       key: function (req, file, cb) {
-        cb(null, 'image' + Date.now().toString() + 'jpeg')
+        cb(null, 'image' + Date.now().toString() + '.jpeg')
       }
     })
   }).array('file', 12);
@@ -128,7 +129,7 @@ module.exports = function (Usermodel) {
           if (err) {
             return cb(err)
           } else {
-            return cb(null, data);
+            return cb(null, url);
           }
         });
       }

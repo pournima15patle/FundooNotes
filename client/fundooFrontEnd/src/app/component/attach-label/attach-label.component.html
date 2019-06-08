@@ -1,0 +1,9 @@
+<div *ngFor='let item of labels' fxLayout="row"   fxLayoutGap="20px" class="label">
+  <div fxLayout="row">
+    <mat-checkbox  [(ngModel)]="checked"></mat-checkbox>  
+  </div>
+   <div>
+      {{item.labelName}}
+   </div>
+   <br>
+</div><br>

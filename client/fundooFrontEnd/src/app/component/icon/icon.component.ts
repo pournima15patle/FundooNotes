@@ -12,6 +12,7 @@ export class IconComponent implements OnInit {
   @Input() noteData: any;
   @Output() reminder = new EventEmitter();
   @Output() color=new EventEmitter();
+  @Output() label=new EventEmitter();
   model: any
   flag=false
   constructor(private note:NotesService) { }

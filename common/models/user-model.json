@@ -13,8 +13,13 @@
     "lastName": {
       "type": "string",
       "required": true
-    }
-  },
+    },
+  
+  "Profile": {
+    "type": "string"
+
+  }
+},
   "validations": [],
   "relations": {
     "notes": {

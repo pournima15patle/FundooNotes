@@ -91,6 +91,7 @@ export class RetriveAllNotesComponent implements OnInit {
       this.myColor=$event;
       this.model={
         id:item.id,
+       userId :localStorage.getItem('userid'),
         color:this.myColor
       }
       this.note.setColor(this.model).subscribe(

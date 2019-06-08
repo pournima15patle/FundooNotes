@@ -5,9 +5,9 @@ var boot = require('loopback-boot');
 require('dotenv').config()
 var app = module.exports = loopback();
 
-app.start = function() {
+app.start = function () {
   // start the web server
-  return app.listen(function() {
+  return app.listen(function () {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');
     console.log('Web server listening at: %s', baseUrl);
@@ -20,13 +20,13 @@ app.start = function() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
+boot(app, __dirname, function (err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`
   if (require.main === module)
     app.start();
-    console.log("server connected")
+  console.log("server connected")
 });
 
 // connection to the redis db
@@ -35,16 +35,16 @@ var client = redis.createClient();
 client.on('connect', () => {
   console.log('connected to redis');
 
-app.use(loopback.token())
-app.use(function (req, res, next) {
-app.currentUser = null;
-// console.log(req.accessToken);
-if (!req.accessToken) return next();
-req.accessToken.user(function (err, userId) {
-if (err) return next(err);
-// console.log(userId);
-req.currentUser = req.accessToken.userId;
-next();
-});
-});
+  app.use(loopback.token())
+  app.use(function (req, res, next) {
+    app.currentUser = null;
+    // console.log(req.accessToken);
+    if (!req.accessToken) return next();
+    req.accessToken.user(function (err, userId) {
+      if (err) return next(err);
+       console.log(userId);
+      req.currentUser = req.accessToken.userId;
+      next();
+    });
+  });
 });

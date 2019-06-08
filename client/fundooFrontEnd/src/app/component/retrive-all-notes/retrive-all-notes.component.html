@@ -26,6 +26,15 @@
           </mat-chip-list>
         </div>
 
+        <!-- <div>
+          <mat-chip-list #chipList>
+            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
+              {{}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div> -->
+
         <div fxFlex="100" fxLayoutAlign="start start">
           <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item ,$event)'
             (color)='setColor(item,$event)'></app-icon>
