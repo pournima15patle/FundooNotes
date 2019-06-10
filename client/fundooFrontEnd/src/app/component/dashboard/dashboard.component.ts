@@ -42,7 +42,7 @@ profile = localStorage.getItem('Profile')
 
   ngOnInit() {
     this.viewUpdate();
-    localStorage.getItem('Profile')
+    localStorage.getItem('profilePic')
   }
 
   profileImage(event): void {

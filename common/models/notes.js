@@ -206,7 +206,74 @@ module.exports = async function (Notes) {
             returns: { arg: 'result', type: 'string' }
         });
 
-
+        /***************************************************************************************
+         * @Purpose :
+         ****************************************************************************************/
+        Notes.addLabel = function (data, req, cb) {
+            console.log("data", data);
+    
+            try {
+                if (typeof data.id === 'undefined') {
+                    throw new Error('ID is missing');
+                }
+                if (typeof data.label === 'undefined') {
+                    throw new Error('Action is undefined');
+                }
+    
+                var info = {
+                    "id": data.id,
+                    "label": data.label,
+                }
+                console.log("note id", info);
+    
+                if (req.currentUser != data.userId && data.id != null && data.labelName != null) {
+                    cb(null, "user is not authenticate")
+                } else {
+    
+                    // console.log("request: ", isTrash, id);
+                    // if (typeof data.isTrash === "boolean") {
+    
+                    Notes.updateAll({ _id: info.id }, { label: info.label }, function (err, data) {
+                        if (err) {
+                            cb(err)
+                        } else {
+                            var response = "Successfully removed";
+                            cb(null, data);
+                            // console.log(response);
+                        }
+                    });
+                    // } 
+                    // else {
+                    // cb("Give Boolean input true/false")
+                    // }
+                }
+            } catch (e) {
+                console.error('Error: ', e);
+                if (e instanceof AssertionError
+                    || e instanceof RangeError
+                    || e instanceof ReferenceError
+                    || e instanceof SyntaxError
+                    || e instanceof SystemError
+                    || e instanceof TypeError) {
+                    return cb('Something bad happened!');
+                } else {
+                    return cb(e.message);
+                }
+            }
+        }
+    
+        Notes.remoteMethod(
+            'addLabel',
+            {
+                http: { path: '/addLabel', verb: 'post' },
+                accepts: [{
+                    arg: 'data', type: 'object', http: { source: 'body' },
+                    "description": 'Requred UserId,NoteId and label', "required": true
+                },
+                { "arg": 'req', "type": 'object', "http": { "source": 'req' } }],
+                returns: { arg: 'result', type: 'string' }
+            });
+    
     /**********************************************TRASH*****************************************
      * @Purpose : To create the api for trash and setting the flag in notes. 
      *******************************************************************************************/
@@ -368,7 +435,7 @@ module.exports = async function (Notes) {
     Notes.afterRemote('find', function (ctx, abc, next) {
         console.log('Notes are :', ctx.result);
 
-        client.set('note' + ctx.result.id, JSON.stringify(ctx.result), redis.print, cb);
+        client.set('note' + ctx.result.id, JSON.stringify(ctx.result), redis.print);
 
         client.get('note' + ctx.result.id, (err, reply) => {
             if (err) {

@@ -106,6 +106,10 @@ export class RetriveAllNotesComponent implements OnInit {
       )
     }
     
+
+    setLabel($event){
+      
+    }
   }
 
   

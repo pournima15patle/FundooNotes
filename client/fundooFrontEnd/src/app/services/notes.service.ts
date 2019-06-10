@@ -114,4 +114,11 @@ export class NotesService {
     }
     return this.http.postSearchNote(reqbody)
   }
+
+  addLabel(data){
+    const reqbody={
+      body:data
+    }
+    return this.http.addLabel(reqbody)
+  }
 }

@@ -26,7 +26,7 @@
     </div> -->
 
       <!-- ***************************************************************************** -->
-      <div fxFlex="60" fxLayoutAlign="end start">
+      <div fxFlex="70" fxLayoutAlign="end start">
         <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
           <button mat-icon-button class="search-button">
             <mat-icon matTooltip="Search">search</mat-icon>
@@ -38,8 +38,8 @@
       </div>
 
       <div fxFlex="25" fxLayoutAlign="end start" fxLayoutGap="10px">
-        <div>
-          <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
+        <div >
+          <button mat-icon-button style="margin-left: 60px;" color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
             <mat-icon>refresh</mat-icon>
           </button>
         </div>
@@ -140,7 +140,7 @@
 
       <mat-nav-list>
 
-        <div class="lable">LABELS</div>
+        <div class="lable">LABELS</div><br>
         <app-get-all-lable></app-get-all-lable>
       </mat-nav-list>
       <mat-nav-list>

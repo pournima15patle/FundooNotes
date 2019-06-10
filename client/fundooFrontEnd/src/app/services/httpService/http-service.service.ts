@@ -198,5 +198,21 @@ postgetNoteForTrash(options){
     return this.http.post(this.baseUrl+'upload',options, httpOptions);
   
   }
+
+  addLabel(options){
+    console.log("fd",options);
+    // var data=options;
+    // console.log("search data",data);
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token'),
+      // profile:data
+      })
+    };
+    
+    return this.http.post(this.baseUrl2+'addLabel',options, httpOptions);
+  
+  }
 }
 

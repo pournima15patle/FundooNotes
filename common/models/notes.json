@@ -16,7 +16,7 @@
     },
     "discription": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "color": {
       "type": "string",
@@ -40,10 +40,12 @@
     "reminder": {
       "type": "date",
       "required": false
+     
     },
     "label": {
-      "type": "object",
-      "required": false
+      "type": "string",
+      "required": false,
+      "default": "false"
     }
   },
   "validations": [],
