@@ -60,18 +60,50 @@
                 <button mat-icon-button (click)="isArchive()">
                         <mat-icon> archive</mat-icon>
                 </button>
-                <button mat-icon-button [matMenuTriggerFor]="menu" >
+                <button mat-icon-button [matMenuTriggerFor]="menu">
                         <mat-icon> more_vert</mat-icon>
                         <mat-menu #menu="matMenu">
                                 <button mat-menu-item (click)="isTrash()">Delete Note</button>
-                                <button mat-menu-item  [matMenuTriggerFor]="menu1">Add Label</button>
+                                <button mat-menu-item [matMenuTriggerFor]="menu1">Add Label</button>
+
                                 <mat-menu #menu1="matMenu" style="width:50px">
                                         <div>Label Notes</div>
-                                        <mat-divider></mat-divider><br>
+                                        <mat-divider></mat-divider>
+                                        <div *ngFor='let item of labels;index as i' fxLayout="row" fxLayoutGap="20px"
+                                                class="label">
+                                                <div fxLayout="row">
+                                                        <mat-checkbox [(ngModel)]="checked+i" (onclick)="attachLabel(item, i)">
+                                                        </mat-checkbox>
+                                                </div>
+                                                <div>
+                                                        {{item.labelName}}
+                                                </div>
+                                                <br>
+                                        </div><br>
+
+                                        <!-- <mat-menu #Label="matMenu" style="width:50px">
+                                                <div fxLayout="column" fxLayoutAlign="start start">
+                                                <div>Label note </div>
+                                                <mat-divider></mat-divider>
+                                                <br>
+                                                
+                                                <div *ngFor='let item of labels;index as i' fxLayout="row" fxLayoutGap="20px">
+                                                <div fxLayout="row">
+                                                <mat-checkbox [(ngModel)]="checked+i" (click)="setLabel(item, i)"></mat-checkbox>
+                                                </div>
+                                                <div>
+                                                {{item.LableName}}
+                                                </div>
+                                                
+                                                </div>
+                                                
+                                                </div>
+                                                </mat-menu> -->
+
                                         <app-attach-label></app-attach-label>
                                 </mat-menu>
                         </mat-menu>
                 </button>
 
         </div>
-        </div>
+</div>

@@ -11,6 +11,7 @@ import { ReminderComponent } from './component/reminder/reminder.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { RetriveAllNotesComponent } from './component/retrive-all-notes/retrive-all-notes.component';
 import { SearchComponent } from './component/search/search.component';
+import { VMComponent } from './component/vm/vm.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
         path:'trash',
         component:TrashComponent
       },
+      {
+        path:'virtualUser',
+        component:VMComponent
+      }
     ]
   }
 ];

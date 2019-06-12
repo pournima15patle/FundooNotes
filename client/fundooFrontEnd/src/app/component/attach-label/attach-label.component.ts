@@ -17,37 +17,36 @@ export class AttachLabelComponent implements OnInit {
   constructor(private note: NotesService,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.getAllLable();
+    // this.getAllLable();
   }
 
-  getAllLable(){
-    this.note.getAllLable().subscribe(data => {
+  // getAllLable(){
+  //   this.note.getAllLable().subscribe(data => {
 
-      console.log("this is getlabels right ", data);
-      this.labels = data
-    },
-    error => {
-      console.log("error in getAllLabel: ", error);
+  //     console.log("this is getlabels right ", data);
+  //     this.labels = data
+  //   },
+  //   error => {
+  //     console.log("error in getAllLabel: ", error);
 
-    })
-  }
+  //   })
+  // }
 
-  attachLabel(){
-    // this.model={
-    //   // id:this.noteData.id,
-    //   // label:this,
-    // }
-
-    this.note.addLabel(this.model).subscribe(
-      data => {
-        console.log("data with set archive: ", data);
-        this.snackBar.open('add note successfully' ,'EndNow',{duration: 3000});
+  // attachLabel(){
+  //   // this.model={
+  //   //   // id:this.noteData.id,
+  //   //   // label:this,
+  //   // }
+  //   this.note.addLabel(this.model).subscribe(
+  //     data => {
+  //       console.log("data with set archive: ", data);
+  //       this.snackBar.open('add note successfully' ,'EndNow',{duration: 3000});
         
-      },
-      error => {
-       console.log("error with set archive:", error);
-       this.snackBar.open(' Failed to add note' ,'EndNow',{duration: 3000});
-      }
-    )
-  }
+  //     },
+  //     error => {
+  //      console.log("error with set archive:", error);
+  //      this.snackBar.open(' Failed to add note' ,'EndNow',{duration: 3000});
+  //     }
+  //   )
+  // }
 }

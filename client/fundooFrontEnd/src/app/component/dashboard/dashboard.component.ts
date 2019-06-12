@@ -147,6 +147,10 @@ profile = localStorage.getItem('Profile')
     //localStorage.clear();
     localStorage.removeItem('access_token');
   }
+  virtualUser() {
+    this.router.navigate(['dashboard', 'virtualUser'])
+  }
+
 
  
 }

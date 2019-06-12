@@ -1,10 +1,18 @@
 
-  <div *ngFor='let item of labels' fxLayout="row"   fxLayoutGap="35px" class="label">
-    <div fxLayout="row">
-        <img src="../../../assets/img/label_outline_24px.svg" />
+  <div *ngFor='let item of labels' >
+     
        
-    </div>
-     <div>
-        {{item.labelName}}
-     </div>
+            <button mat-raised-button style="height: 43px;width: 196px;">
+               <div fxLayout="row"   fxLayoutGap="35px" class="label">
+         <div fxLayout="row">
+            <img src="../../../assets/img/label_outline_24px.svg" />
+           
+        </div>
+         <div>
+            {{item.labelName}}
+         </div>  
+      </div>
+      </button>
+      
+    
   </div>

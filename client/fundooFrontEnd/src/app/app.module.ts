@@ -32,6 +32,8 @@ import { SetProfileComponent } from './component/set-profile/set-profile.compone
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { AttachLabelComponent } from './component/attach-label/attach-label.component';
+import { VMComponent } from './component/vm/vm.component';
+import { AddVMComponent } from './component/add-vm/add-vm.component';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { AttachLabelComponent } from './component/attach-label/attach-label.comp
     SearchComponent,
     SetProfileComponent,
     AttachLabelComponent,
+    VMComponent,
+    AddVMComponent,
   
     
   ],
@@ -69,7 +73,7 @@ import { AttachLabelComponent } from './component/attach-label/attach-label.comp
    
   ],
   providers: [HttpServiceService,UserService],
-  entryComponents:[DialogBoxComponent,EditLabelComponent,SetProfileComponent],
+  entryComponents:[DialogBoxComponent,EditLabelComponent,SetProfileComponent,AddVMComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 <div *ngIf='gridView ' fxLayout="row wrap">
   <div *ngFor='let item of notes'  flex-offset="15px"fxLayoutAlign="space-around center " fxLayout.xs="row" fxFlex="28%" fxLayoutGap="10%" style="padding: 10px">
-
-    <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:10px;" 
+    
+    <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:15px;" 
       fxFlex.xs="100" fxLayout="column" fxLayoutAlign="space-around center" class="matcard" fxFlex="90" fxFlexOffset.xl="10" mat-raised-button
       style="box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.200)" > 
 
@@ -42,17 +42,17 @@
       </div>
 
     </mat-card>
-
+  </div>
   </div>
 
-</div>
+
 
 <!-- *************************************************************************************** -->
 
 <div *ngIf='gridView==false' fxLayout="column wrap">
   <div *ngFor='let item of notes' fxLayoutAlign="center " fxLayout.xs="row" fxFlex="30" style="padding: 10px" >
    
-    <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:10px;"
+    <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:15px;"
       fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="65" fxFlexOffset.xl="10" mat-raised-button>
 
 
@@ -65,7 +65,7 @@
           <div>
             {{item.discription}}
           </div>
-        </div>
+      
         <div>
           <mat-chip-list #chipList>
             <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
@@ -75,13 +75,19 @@
           </mat-chip-list>
         </div>
 
+        <!-- <div *ngIf = "item.LableName != null" >
+          <mat-chip-list>
+          <mat-chip>{{item.LableName}}</mat-chip>
+          </mat-chip-list>
+          </div> -->
+      </div>
       </div>
 
 
 
       <div fxFlex="100" fxLayoutAlign="start end">
         <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item,$event)'
-          (color)='setColor(item,$event)'></app-icon>
+          (color)='setColor(item,$event)' (changeLabel)="LableName(item,$event)"></app-icon>
       </div>
 
 

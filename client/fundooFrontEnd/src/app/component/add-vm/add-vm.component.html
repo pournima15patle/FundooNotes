@@ -1,0 +1,71 @@
+<div fxFlex="auto">
+
+    <div class="title-div">
+        <h1 class="title" mat-dialog-title>Add VM</h1>
+    </div>
+
+</div>
+
+  <div fxLayout="column" fxFlex="auto" fxLayout.xs="column" fxLayoutGap="8%" fxLayoutAlign="center center">
+    <br>
+      <div>
+        <mat-form-field   class="firstName" appearance="outline" >
+          <mat-label>userName</mat-label>
+          <input matInput placeholder="enter your userName" >
+        </mat-form-field>
+      </div>
+
+      <div>
+          <mat-form-field  class="firstName" appearance="outline" >
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="enter your Email Id" >
+          </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field   class="phone" appearance="outline" >
+              <mat-label>Phone*</mat-label>
+              <input matInput placeholder="enter your Phone no." >
+            </mat-form-field>
+        </div>  
+
+        <div fxLayout="row" fxLayoutGap="4%" class="set">
+           <div>
+              <mat-form-field   class="date" appearance="outline" >
+                <mat-label>start Date*</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>  
+              
+          <div>
+              <mat-form-field   class="date" appearance="outline" >
+                <mat-label>End Date*</mat-label>
+                <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+          </div>  
+        </div>
+
+        <div>
+            <mat-form-field   class="phone" appearance="outline" >
+                <mat-label>Git ID</mat-label>
+                <input matInput placeholder="enter your Git ID" >
+              </mat-form-field>
+        </div>
+        <br>
+        <div fxLayoutAlign="end center" fxLayoutGap='5%' class="margin">
+            <div>
+              <button  mat-button style="border:2px; color:blue">Cancel</button>
+            </div>
+            <div>
+                
+               <button  mat-button style="background-color: rgb(28, 219, 257); color:white" >Submit</button>
+                
+               <!-- <img  style="color:white" src="../../../assets/img/round-add-24px.svg" />Add VM</button> -->
+           
+           </div>   
+        </div>
+</div>

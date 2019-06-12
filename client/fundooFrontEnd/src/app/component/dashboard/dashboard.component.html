@@ -38,8 +38,9 @@
       </div>
 
       <div fxFlex="25" fxLayoutAlign="end start" fxLayoutGap="10px">
-        <div >
-          <button mat-icon-button style="margin-left: 60px;" color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
+        <div>
+          <button mat-icon-button style="margin-left: 60px;" color="basic" (click)="refresh()" id="refresh"
+            matTooltip="Refresh">
             <mat-icon>refresh</mat-icon>
           </button>
         </div>
@@ -53,7 +54,7 @@
                 src="../../../assets/img/outline-border_all-24px.svg" /></mat-icon>
           </button>
         </div>
-         <div>
+        <div>
           <button mat-icon-button [matMenuTriggerFor]="menu1">
             <img src="../../../assets/img/outline-settings-24px.svg" />
           </button>
@@ -79,33 +80,33 @@
 
         <div fxLayout="row" fxLayoutAlign="end start">
           <button style="outline: none;" mat-icon-button [matMenuTriggerFor]="menu">
-          <div mat-card-avatar
-          [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'47px','width':'47px'}"
-          class="img1"></div>
+            <div mat-card-avatar
+              [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'47px','width':'47px'}"
+              class="img1"></div>
           </button>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
-          
-          <mat-menu class="menu" #menu="matMenu"> 
-          
-          <div>
-          <mat-card-header>
-          <div mat-card-avatar
-          [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'86px','width':'86px'}"
-          class="img2" (click)=image.click()>
-          </div>
-          <mat-card-title class="color">{{firstName}} {{lastName}}</mat-card-title>
-          <mat-card-subtitle>{{email}}</mat-card-subtitle>
-          </mat-card-header><br>
-          <mat-divider></mat-divider>
-          <div fxLayout="row" fxLayoutAlign="end">
-          <input type="file" class="fileSelect" (change)=profileImage($event) #image style="width: 172px">
-          <button mat-flat-button color="warn" routerLink="/login" (click)="logout()">Sign out</button>
-          </div>
-          </div>
-          
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+
+          <mat-menu class="menu" #menu="matMenu">
+
+            <div>
+              <mat-card-header>
+                <div mat-card-avatar
+                  [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'86px','width':'86px'}"
+                  class="img2" (click)=image.click()>
+                </div>
+                <mat-card-title class="color">{{firstName}} {{lastName}}</mat-card-title>
+                <mat-card-subtitle>{{email}}</mat-card-subtitle>
+              </mat-card-header><br>
+              <mat-divider></mat-divider>
+              <div fxLayout="row" fxLayoutAlign="end">
+                <input type="file" class="fileSelect" (change)=profileImage($event) #image style="width: 172px">
+                <button mat-flat-button color="warn" routerLink="/login" (click)="logout()">Sign out</button>
+              </div>
+            </div>
+
           </mat-menu>
-          </div>
+        </div>
       </div>
     </mat-toolbar>
   </div>
@@ -139,7 +140,7 @@
       <mat-divider></mat-divider>
 
       <mat-nav-list>
-
+        <br>
         <div class="lable">LABELS</div><br>
         <app-get-all-lable></app-get-all-lable>
       </mat-nav-list>
@@ -169,6 +170,16 @@
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img src="../../../assets/img/bin.svg" /></div>
             <mat-list-item>Trash</mat-list-item>
+          </div>
+        </button>
+      </mat-nav-list>
+
+      <mat-nav-list>
+        <button mat-raised-button  (click)="virtualUser()" style="width: 193px;">
+          <div fxLayout="row" fxLayoutGap="30%">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/baseline-people-24px.svg" /></div>
+            <mat-list-item>Virtual User</mat-list-item>
           </div>
         </button>
       </mat-nav-list>

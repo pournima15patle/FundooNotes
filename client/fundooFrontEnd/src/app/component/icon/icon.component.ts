@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { SelectControlValueAccessor } from '@angular/forms';
 import { NotesService } from '../../services/notes.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-icon',
@@ -12,16 +13,35 @@ export class IconComponent implements OnInit {
   @Input() noteData: any;
   @Output() reminder = new EventEmitter();
   @Output() color=new EventEmitter();
-  @Output() label=new EventEmitter();
+  @Output() changeLabel=new EventEmitter();
   model: any
   flag=false
-  constructor(private note:NotesService) { }
-
+  constructor(private note:NotesService,private snackBar: MatSnackBar) { }
+  labels: any=[];
+  items: any[];
   ngOnInit() {
-  
+   this.getAllLable();
     
   }
 
+  getAllLable(){
+    this.note.getAllLable().subscribe(data => {
+
+      console.log("this is getlabels right ", data);
+      this.labels = data
+    },
+    error => {
+      console.log("error in getAllLabel: ", error);
+
+    })
+  }
+
+ 
+
+  setLabel(item,i){
+    this.changeLabel.emit(item) 
+    console.log("data of getAlllabels111111111111: ", item);
+    }
 
   todayDate() {
     

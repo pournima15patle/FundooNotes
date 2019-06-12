@@ -115,7 +115,7 @@ export class NotesService {
     return this.http.postSearchNote(reqbody)
   }
 
-  addLabel(data){
+  setlabel(data){
     const reqbody={
       body:data
     }
