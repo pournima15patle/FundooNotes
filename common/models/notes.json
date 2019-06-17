@@ -40,7 +40,6 @@
     "reminder": {
       "type": "date",
       "required": false
-     
     },
     "label": {
       "type": "string",

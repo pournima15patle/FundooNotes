@@ -20,6 +20,8 @@ export class SetProfileComponent implements OnInit {
   }
   imageCropped(event) {
     this.croppedImage = event
+    console.log("image name",this.croppedImage);
+    
   }
 
 

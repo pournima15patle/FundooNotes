@@ -1,42 +1,42 @@
-<div class="whole" fxLayout="column " fxFlex="100" >
-<div fxLayout="row " fxFlex='60' class=" firstdiv" fxLayoutGap="50" fxLayoutAlign="center center" >
+<div class="whole" fxLayout="column " fxFlex="100%">
+  <div fxLayout="row " fxFlex="60" class=" firstdiv" fxLayoutGap="30" fxLayoutAlign="center center">
 
-  <div  fxFlex='55' fxFlexOffset="-2" fxLayoutAlign="start center"fxLayoutGap="2%" >
-    
-          <div>
-          <!-- <div fxFlex="20"><label>Coding Cafe</label></div> -->
-              <body>Coding Cafe</body>
-          </div> 
-          <div class="round">25</div>
-          
-         
-  </div>
-
-  <div fxLayoutAlign="end center" fxLayoutGap='5%'>
-    <div>
-      <button  mat-button style="border:2px;">End VM</button>
+    <div fxFlex="15" fxFlexOffset="5" fxLayoutAlign="start center" fxLayoutGap="2%">
+      <div>
+        <!-- <div fxFlex="20"><label>Coding Cafe</label></div> -->
+        <body>Coding Cafe</body>
+      </div>
+      <div class="round">25</div>
     </div>
-    <div>
-        
-       <button  mat-button style="background-color: rgb(28, 219, 257); color:white" (click)="addVmDialog()" >
-        
-       <!-- <img  style="color:white" src="../../../assets/img/round-add-24px.svg" />Add VM</button> -->
-       <mat-icon style="color:white">add</mat-icon>Add VM</button>
-   </div>   
+    <div fxFlex="50" fxLayoutAlign="end center" fxLayoutGap='2%'>
+      <div>
+        <button mat-stroked-button class="Vm">End VM</button>
+      </div>
+      <div>
+
+        <button mat-button class="buttons" (click)="addVmDialog()">
+
+          <!-- <img  style="color:white" src="../../../assets/img/round-add-24px.svg" />Add VM</button> -->
+          <mat-icon>add</mat-icon>Add VM
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
   </div>
- 
-</div>
 
-
-<div fxFlex="80" fxLayoutAlign="center center">
-    <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
-      <button mat-icon-button class="search-button">
-        <mat-icon matTooltip="Search">search</mat-icon>
-      </button>
-      <input fxFlex="90" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search"
-        [style.fontSize.px]="16" class="search-window" autocomplete="off" />
-      <p>{{value}}</p>
-    </mat-form-field>
-</div>
-
+  <div fxFlex="70" fxLayoutAlign="center center">
+      <mat-form-field  class="search">
+        <button mat-icon-button class="search-button">
+          <mat-icon matTooltip="Search">search</mat-icon>
+        </button>
+        <input fxFlex="90" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search"
+          [style.fontSize.px]="16" class="search-window" autocomplete="off" />
+        <p>{{value}}</p>
+      </mat-form-field>
+    </div>
+  
+  <div>
+    <app-get-all-vmuser></app-get-all-vmuser>
+  </div>
 </div>

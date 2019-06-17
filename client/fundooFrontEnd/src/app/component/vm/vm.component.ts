@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddVMComponent } from '../add-vm/add-vm.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { AddVMComponent } from '../add-vm/add-vm.component';
 export class VMComponent implements OnInit {
  
 
-  constructor( private dialog: MatDialog,) { }
+  constructor( private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -30,4 +30,5 @@ export class VMComponent implements OnInit {
 
     });
   }
-}
+
+  }

@@ -1,0 +1,83 @@
+<div style="height:100vh;margin-top: 46px;">
+  <div fxFlex="100" fxLayout="row" fxLayoutGap="10%" fxFlexOffset="20" style="height:100vh">
+    <div fxLayout="column" fxLayoutGap="14%">
+      <div fxLayout="row" fxlayout="center center" fxLayoutGap="5%">
+        <div>
+          <mat-icon class="icon">crop_square</mat-icon>
+        </div>
+        <div>
+          <span fxLayout="column" fxLayoutGap="5%" class="font">USER NAME</span>
+        </div>
+      </div>
+
+      <div *ngFor='let item of users' class='userName'>
+
+        <div fxLayout="row" fxLayoutGap="7%">
+             <div>
+               <mat-icon class="icon1">crop_square</mat-icon>
+              </div>
+              <div class="color">
+                  {{item.userName}}
+              </div>
+        </div>
+      </div>
+
+    </div>
+<div  fxLayout="column" fxLayoutGap="10%"> 
+  <span  class="font">CLOUD SERVICES</span>
+  <div *ngFor='let item of users'fxLayout="row" fxLayoutGap="2%" class="for">
+  
+        <div><img  class="image1" src="../../../assets/img/elastic.png"></div>
+        <div><img class="image2" src="../../../assets/img/mdb.png"></div>
+        <div><img class="image3" src="../../../assets/img/redis.png"></div>
+        <div><img class="image4" src="../../../assets/img/sql.jpeg"></div>
+    
+  </div>
+</div>
+    
+
+    <div fxLayout="column" fxLayoutGap="10%">
+      <span fxLayout="column" class="font">END DATE</span>
+      <div *ngFor='let item of users' class="date">{{item.endDate}}</div>
+    </div>
+
+<div>
+    <div *ngFor='let item of users'  class="more"  fxLayoutGap="10px">
+      
+       <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+       </button>
+
+       <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <span>start</span>
+          </button>
+         
+          <button mat-menu-item>
+            <span>Launch</span>
+          </button>
+
+          <button mat-menu-item>
+            <span>Stop</span>
+          </button>
+
+          <button mat-menu-item>
+              <span>Get Status</span>
+           </button>
+
+          <button mat-menu-item>
+              <span>force Stop</span>
+          </button>
+
+          <button mat-menu-item>
+              <span>Restart</span>
+          </button>
+
+        </mat-menu>
+     </div>
+    </div>
+
+
+
+  </div>
+</div>

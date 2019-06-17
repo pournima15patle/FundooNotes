@@ -12,6 +12,8 @@ import { TrashComponent } from './component/trash/trash.component';
 import { RetriveAllNotesComponent } from './component/retrive-all-notes/retrive-all-notes.component';
 import { SearchComponent } from './component/search/search.component';
 import { VMComponent } from './component/vm/vm.component';
+import { GetAllVMUserComponent } from './component/get-all-vmuser/get-all-vmuser.component';
+import { AuthGuard } from './auth-guard';
 
 const routes: Routes = [
   {
@@ -36,7 +38,7 @@ const routes: Routes = [
     component:ResetPasswordComponent
   },
 
-  {
+  { canActivate:[AuthGuard],
     path:'dashboard',
     component:DashboardComponent,
 
@@ -77,6 +79,10 @@ const routes: Routes = [
       {
         path:'virtualUser',
         component:VMComponent
+      },
+      {
+        path:'AllVmUser',
+        component:GetAllVMUserComponent
       }
     ]
   }

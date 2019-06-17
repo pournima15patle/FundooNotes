@@ -34,6 +34,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { AttachLabelComponent } from './component/attach-label/attach-label.component';
 import { VMComponent } from './component/vm/vm.component';
 import { AddVMComponent } from './component/add-vm/add-vm.component';
+import { GetAllVMUserComponent } from './component/get-all-vmuser/get-all-vmuser.component';
+import { AuthGuard } from './auth-guard';
 
 
 @NgModule({
@@ -59,6 +61,7 @@ import { AddVMComponent } from './component/add-vm/add-vm.component';
     AttachLabelComponent,
     VMComponent,
     AddVMComponent,
+    GetAllVMUserComponent,
   
     
   ],
@@ -72,7 +75,7 @@ import { AddVMComponent } from './component/add-vm/add-vm.component';
     ImageCropperModule
    
   ],
-  providers: [HttpServiceService,UserService],
+  providers: [HttpServiceService,UserService,AuthGuard],
   entryComponents:[DialogBoxComponent,EditLabelComponent,SetProfileComponent,AddVMComponent],
   bootstrap: [AppComponent]
 })

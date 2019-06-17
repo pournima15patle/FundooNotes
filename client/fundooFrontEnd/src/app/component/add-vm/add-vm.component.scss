@@ -1,7 +1,9 @@
+@import "../../scss/color.scss";
+
 .title-div {
 margin-top: -47px;
 margin-left: 78px;
-background-color: blue;
+background-color:$blue;
 position: absolute;
 padding-left: 60px;
 padding-right: 60px;
@@ -38,4 +40,8 @@ margin-bottom: 5px;
 
 .set{
     margin-right: 19px;
+}
+
+.submit{
+    background-color:$blue;
 }

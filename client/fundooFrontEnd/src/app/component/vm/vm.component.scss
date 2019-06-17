@@ -1,3 +1,6 @@
+@import '../../scss/color.scss';
+
+
 .firstdiv{
     height: 50px;
   
@@ -20,7 +23,7 @@
     height: 18px;
     border-radius: 10px;
     width:30px;
-    background-color:  rgb(28, 219, 253);
+    background-color:$blue;
     color: #FFFFFF;
     // border: 2px solid #EF3371;
     font-size: 12px;
@@ -30,3 +33,21 @@
    
     }
     
+    .search {
+        border-radius: 10%;
+        margin-left: - 28%;
+        width: 70%;
+        line-height: 2;
+        background: rgba(0, 0, 0, 0.04);
+        border: none;
+        outline: none;
+        }
+
+    .buttons{
+        background-color: $blue;
+        color:white
+    }    
+
+    .Vm{
+        color:$blue;
+    }

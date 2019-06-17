@@ -1,13 +1,13 @@
 <div>
   <div>
-    <mat-toolbar>
+    <mat-toolbar >
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon matTooltip="Main Menu">menu</mat-icon>
       </button>
 
       <div fxFlex="2">
         <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="Welcome to Fundoo Notes">
-          <img id="google-keep-logo" src="../../../assets/img/keep.png" />
+          <img  src="../../../assets/img/keep.png" />
 
           <h3 class="example-app-name" fxLayoutAlign="center center">
             <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="end center">
@@ -119,67 +119,74 @@
 
 
       <mat-nav-list>
-        <button mat-raised-button (click)="retriveAllNotes()" style="width: 196px;">
+        <button mat-flat-button (click)="retriveAllNotes()">
           <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img src="../../../assets/img/note.svg" /></div>
-            <mat-list-item>Notes</mat-list-item>
+            <div>Notes</div>
           </div>
         </button>
       </mat-nav-list>
-      <mat-nav-list>
-        <button mat-raised-button>
+
+      <mat-nav-list style=" padding-top: 0px;">
+        <button mat-flat-button>
           <div fxLayout="row" fxLayoutGap="30px">
-            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+            <div fxFlex="10" fxLayout="row" [style.fontSize.px]="1">
               <img src="../../../assets/img/remainder.svg" /></div>
-            <mat-list-item>Reminders</mat-list-item>
+            <div>Reminders</div>
           </div>
         </button>
       </mat-nav-list>
 
-      <mat-divider></mat-divider>
+      <mat-divider style="margin-top: 10px;"></mat-divider>
+
+      <div fxLayoutGap="10%">
+        <div class="lable">LABELS</div>
+        <div>
+          <app-get-all-lable></app-get-all-lable>
+        </div>
+      </div>
 
       <mat-nav-list>
-        <br>
-        <div class="lable">LABELS</div><br>
-        <app-get-all-lable></app-get-all-lable>
-      </mat-nav-list>
-      <mat-nav-list>
-        <button mat-raised-button>
+        <button mat-flat-button (click)="labelDialog()">
           <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img src="../../../assets/img/outline-create-24px.svg" /></div>
-            <mat-list-item mat-raised-button (click)="labelDialog()">Edit lables</mat-list-item>
+            <div>Edit lables</div>
           </div>
         </button>
       </mat-nav-list>
 
-      <mat-divider></mat-divider>
+      <mat-divider style="margin-top: 10px;"></mat-divider>
+
       <mat-nav-list>
-        <button mat-raised-button (click)="archive()" style="width: 193px;">
+        <button mat-flat-button (click)="archive()">
           <div fxLayout="row" fxLayoutGap="30px">
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img src="../../../assets/img/archieve.svg" /></div>
-            <mat-list-item mat-raised-button (click)="archive()">Archive</mat-list-item>
-          </div>
-        </button>
-      </mat-nav-list>
-      <mat-nav-list>
-        <button mat-raised-button (click)="trash()" style="width: 193px;">
-          <div fxLayout="row" fxLayoutGap="30%">
-            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
-              <img src="../../../assets/img/bin.svg" /></div>
-            <mat-list-item>Trash</mat-list-item>
+            <div>Archive</div>
           </div>
         </button>
       </mat-nav-list>
 
+      <mat-nav-list style=" padding-top: 0px;">
+        <button mat-flat-button (click)="trash()">
+          <div fxLayout="row" fxLayoutGap="40%">
+            <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
+              <img src="../../../assets/img/bin.svg" /></div>
+            <div>Trash</div>
+          </div>
+        </button>
+      </mat-nav-list>
+
+      <mat-divider style="margin-top: 10px;"></mat-divider>
+
       <mat-nav-list>
-        <button mat-raised-button  (click)="virtualUser()" style="width: 193px;">
-          <div fxLayout="row" fxLayoutGap="30%">
+        <button mat-flat-button (click)="virtualUser()">
+          <div fxLayout="row" fxLayoutGap="30%" >
             <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1">
               <img src="../../../assets/img/baseline-people-24px.svg" /></div>
-            <mat-list-item>Virtual User</mat-list-item>
+            <div>Virtual User</div>
           </div>
         </button>
       </mat-nav-list>

@@ -1,0 +1,34 @@
+{
+  "name": "vm",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "userName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "number"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "gitId": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

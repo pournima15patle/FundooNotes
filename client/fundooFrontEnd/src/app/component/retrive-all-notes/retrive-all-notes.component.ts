@@ -33,12 +33,20 @@ export class RetriveAllNotesComponent implements OnInit {
 
   }
 
+  
+
+
+  // getId(item)
+  // {
+  //   console.log(item.id)
+  // }
 
   retriveCards() {
     this.note.getNote(this.notes).subscribe(
       data => {
         console.log("data of getAllNotes in retriveAll Notes : ", data['data']);
         this.notes = data['data']
+         
       },
       error => {
         console.log("error of getAllNotes: ", error);

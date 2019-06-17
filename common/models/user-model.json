@@ -14,12 +14,10 @@
       "type": "string",
       "required": true
     },
-  
-  "Profile": {
-    "type": "string"
-
-  }
-},
+    "Profile": {
+      "type": "string"
+    }
+  },
   "validations": [],
   "relations": {
     "notes": {
@@ -39,7 +37,7 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
-      }
+    }
   ],
   "methods": {}
 }

@@ -10,6 +10,7 @@ export class HttpServiceService {
   baseUrl: any = environment.baseUrl;
   baseUrl2: any=environment.baseUrl2;
   baseUrl3: any=environment.baseUrl3;
+  baseUrl4:any=environment.baseUrl4;
   constructor(private http:HttpClient) { }
 
   postRegister(options){
@@ -214,5 +215,26 @@ postgetNoteForTrash(options){
     return this.http.post(this.baseUrl2+'addLabel',options, httpOptions);
   
   }
+
+
+
+  /************************************************************************************************/
+  addVmUser(options){
+    console.log("data after creating user: ", options.body);
+    const httpOptions = {
+      headers: new HttpHeaders({
+      'Authorization': localStorage.getItem('access_token'),
+      // profile:data
+      })
+    };
+    
+    return this.http.post(this.baseUrl4,options.body,httpOptions);
+  
+  }
+
+  getVmUser(){
+    return this.http.get(this.baseUrl4);
+  }
+  
 }
 
