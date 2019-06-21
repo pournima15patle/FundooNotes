@@ -10,7 +10,7 @@
     </div>
     <div fxFlex="50" fxLayoutAlign="end center" fxLayoutGap='2%'>
       <div>
-        <button mat-stroked-button class="Vm">End VM</button>
+        <button mat-stroked-button class="Vm" routerLink="/dashboard">End VM</button>
       </div>
       <div>
 
@@ -25,10 +25,10 @@
 
   </div>
 
-  <div fxFlex="70" fxLayoutAlign="center center">
-      <mat-form-field  class="search">
+  <div fxFlex="60" fxLayoutAlign="center center" >
+      <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="1" class="search">
         <button mat-icon-button class="search-button">
-          <mat-icon matTooltip="Search">search</mat-icon>
+          <mat-icon matTooltip="Search" style="margin-bottom: 8px;">search</mat-icon>
         </button>
         <input fxFlex="90" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search"
           [style.fontSize.px]="16" class="search-window" autocomplete="off" />
@@ -39,4 +39,4 @@
   <div>
     <app-get-all-vmuser></app-get-all-vmuser>
   </div>
-</div>
+</div>   

@@ -1,6 +1,6 @@
 
 <div *ngFor='let item of notes' fxLayoutAlign="center " fxLayout.xs="row" fxFlex="30" fxLayoutGap="%">
-  <div *ngIf="item.isTrash===true">
+  <div *ngIf="item.isTrash===true"  fxLayout="row wrap">
 
     <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:10px;"
       fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="65" fxFlexOffset.xl="10" mat-raised-button

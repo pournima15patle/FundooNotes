@@ -1,54 +1,44 @@
-<div >
-  <div *ngIf="flag === true"
-  class="body"
-  fxLayout="row"
-  fxLayoutAlign="space-around start"
-  fxFlex="100">
-<mat-card class="card1" (click)="reverseFlag()">
- <div>
-   <input matInput  placeholder="Take a note...">
-   <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
-      <img src="../../../assets/img/outline-check_box-24px.svg" />
-    </div>
-    <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New note with drawing">
-        <img src="../../../assets/img/outline-brush-24px.svg" />
-    </div>
-    <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New note with image">
-        <img src="../../../assets/img/outline-image-24px.svg" />
-    </div> 
- </div>
-</mat-card> 
-</div>
+<div>
+  <div *ngIf="flag === true" class="body" fxLayout="row" fxLayoutAlign="space-around start" fxFlex="100">
+    <mat-card class="card1" (click)="reverseFlag()">
+      <div>
+        <input matInput placeholder="Take a note...">
+        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
+          <img src="../../../assets/img/outline-check_box-24px.svg" />
+        </div>
+        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New note with drawing">
+          <img src="../../../assets/img/outline-brush-24px.svg" />
+        </div>
+        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New note with image">
+          <img src="../../../assets/img/outline-image-24px.svg" />
+        </div>
+      </div>
+    </mat-card>
+  </div>
 
-<div *ngIf="flag === false"
-     fxLayout="row"
-     fxLayoutAlign="space-around start"
-     fxFlex="100">
+  <div *ngIf="flag === false" fxLayout="row" fxLayoutAlign="space-around start" fxFlex="100">
     <mat-card class="card2">
       <div fxLayout="column" fxLayoutGap="5%">
-      <div>
-        <input matInput  placeholder="Title" [(formControl)]="title">
-        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
+        <div  style="word-wrap: break-word;">
+          <input matInput placeholder="Title" [(formControl)]="title">
+          <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="New list">
             <img src="../../../assets/img/unpinbar.svg" />
           </div>
-      </div>    
-      <div>
-          <input matInput  placeholder="Take a note..." [(formControl)]="discription">
-      </div>
-      <div fxLayout="row" fxLayoutGap="35%">
-        <div>
-          <app-icon ></app-icon>
         </div>
-        <div>
-            <button mat-raised-button (click)="createnote()"(click)="reverseFlag()" >Close</button>
+        <div style="word-wrap: break-word;">
+          <input matInput placeholder="Take a note..."  [(formControl)]="discription">
+        </div>
+        <div fxLayout="row" fxLayoutGap="35%">
+          <div>
+            <app-icon></app-icon>
           </div>
+          <div>
+            <button mat-raised-button (click)="createnote()" (click)="reverseFlag()">Close</button>
+          </div>
+        </div>
       </div>
-    </div>
     </mat-card>
-</div>
+  </div>
 
 </div>
 <app-retrive-all-notes></app-retrive-all-notes>
-
-
-

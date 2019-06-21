@@ -8,13 +8,13 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./attach-label.component.scss']
 })
 export class AttachLabelComponent implements OnInit {
- 
-  labels: any=[];
+
+  labels: any = [];
   items: any[];
   noteData: any;
   model: { id: any; isArchive: boolean; };
 
-  constructor(private note: NotesService,private snackBar: MatSnackBar) { }
+  constructor(private note: NotesService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     // this.getAllLable();
@@ -41,7 +41,7 @@ export class AttachLabelComponent implements OnInit {
   //     data => {
   //       console.log("data with set archive: ", data);
   //       this.snackBar.open('add note successfully' ,'EndNow',{duration: 3000});
-        
+
   //     },
   //     error => {
   //      console.log("error with set archive:", error);

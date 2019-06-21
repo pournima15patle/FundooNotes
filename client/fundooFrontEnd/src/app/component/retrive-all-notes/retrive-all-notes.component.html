@@ -1,32 +1,34 @@
-<div *ngIf='gridView ' fxLayout="row wrap">
-  <div *ngFor='let item of notes'  flex-offset="15px"fxLayoutAlign="space-around center " fxLayout.xs="row" fxFlex="30%" fxLayoutGap="10%" style="padding: 10px">
-     
-    <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:15px;" 
-      fxFlex.xs="100" fxLayout="column" fxLayoutAlign="space-around center" class="card" fxFlex="90" fxFlexOffset.xl="10" mat-raised-button
-      style="box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.200)" > 
+<!-- <div fxLayoutGap="40px"> -->
+  <!-- <div *ngIf='gridView ' fxLayout="row wrap" fxLayoutGap="40px"
+    style=" word-wrap: break-word; max-width: 100%;margin-left: 10%;" fxLayoutAlign="start center"> -->
+    <div  *ngIf='gridView ' fxLayout="row wrap" fxLayoutAlign="start center" >
+    <div *ngFor='let item of notes' style=" word-wrap: break-word;margin-left: 5%;margin-top: 30px;">
+      <!-- style="padding: 10px" -->
+ 
+      <mat-card [style.backgroundColor]='item.color' fxFlex="auto" fxFlex.gt-sm="100" class="card">
 
 
-      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="4%">
+        <div fxLayout="column wrap" fxLayoutAlign="center start" fxLayoutGap="3%">
 
-        <div (click)="openDialogbox(item)">
-          {{item.title }}
-        </div>
+          <div (click)="openDialogbox(item)">
+            {{item.title }}
+          </div>
 
-        <div (click)="openDialogbox(item)">
-          {{item.discription}}
-        </div>
+          <div (click)="openDialogbox(item)" fxFlex="50">
+            {{item.discription}}
+          </div>
 
-        
-        <div *ngIf="item.reminder!=null">
-          <mat-chip-list #chipList>
-            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
-              {{item.reminder | date:'MMM d, y, h:mm a'}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list>
-        </div>
 
-        <!-- <div *ngIf="item.label!=null">
+          <div *ngIf="item.reminder!=null" fxFlex="50">
+            <mat-chip-list #chipList>
+              <mat-chip fxFlex.xs="20">
+                {{item.reminder | date:'MMM d, y, h:mm a'}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+          <!-- <div *ngIf="item.label!=null">
           <mat-chip-list #chipList>
             <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
               {{}}
@@ -35,53 +37,53 @@
           </mat-chip-list>
         </div> -->
 
-        <div fxFlex="100" fxLayoutAlign="start start">
-          <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item ,$event)'
-            (color)='setColor(item,$event)'></app-icon>
+          <div fxFlex="50" fxLayoutAlign="start start">
+            <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item ,$event)'
+              (color)='setColor(item,$event)'></app-icon>
+          </div>
         </div>
-      </div>
 
-    </mat-card>
+      </mat-card>
+    </div>
 
   </div>
-  </div>
+<!-- </div> -->
 
 
 
 <!-- *************************************************************************************** -->
 
+
+
+
 <div *ngIf='gridView==false' fxLayout="column wrap">
-  <div *ngFor='let item of notes' fxLayoutAlign="center " fxLayout.xs="row" fxFlex="30" style="padding: 10px" >
-     
+  <div *ngFor='let item of notes' fxLayoutAlign="center " fxLayout.xs="row" fxFlex="30" style="padding: 10px">
+
     <mat-card [style.backgroundColor]='item.color' style="border: 1px solid lightgrey;border-radius:15px;"
       fxFlex.xs="100" fxLayout="column" class="matcard" fxFlex="65" fxFlexOffset.xl="10" mat-raised-button>
 
 
       <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20%">
         <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20%" (click)="openDialogbox(item)">
-          <div>
+          <div style="word-wrap: break-word;">
             {{item.title}}
           </div>
 
-          <div>
+          <div style="word-wrap: break-word;">
             {{item.discription}}
           </div>
-      
-        <div>
-          <mat-chip-list #chipList>
-            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
-              {{item.reminder | date:'MMM d, y, h:mm a'}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list>
-        </div>
 
-        <!-- <div *ngIf = "item.LableName != null" >
-          <mat-chip-list>
-          <mat-chip>{{item.LableName}}</mat-chip>
-          </mat-chip-list>
-          </div> -->
-      </div>
+          <div>
+            <mat-chip-list #chipList>
+              <mat-chip >
+                {{item.reminder | date:'MMM d, y, h:mm a'}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+          
+        </div>
       </div>
 
 
@@ -93,7 +95,7 @@
 
 
     </mat-card>
-   
+
   </div>
 
 </div>

@@ -19,10 +19,10 @@ export class AddNoteComponent implements OnInit {
   discription = new FormControl('', [Validators.required])
   dialogRef: any;
 
-  constructor(private notes: NotesService, 
+  constructor(private notes: NotesService,
     private activeRoute: ActivatedRoute,
     private snackBar: MatSnackBar) { }
-    access_token = this.activeRoute.snapshot.paramMap.get('access_token');
+  access_token = this.activeRoute.snapshot.paramMap.get('access_token');
 
   ngOnInit() {
   }
@@ -36,7 +36,7 @@ export class AddNoteComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-    
+
   createnote() {
     this.model = {
       'title': this.title.value,
@@ -49,11 +49,11 @@ export class AddNoteComponent implements OnInit {
     this.notes.addNote(this.model).subscribe(
       data => {
         console.log("data after creating note: ", data);
-        this.snackBar.open('note added successfully' ,'EndNow',{duration: 3000});
+        this.snackBar.open('note added successfully', 'EndNow', { duration: 3000 });
       },
       error => {
         console.log("error after creating note: ", error);
-        this.snackBar.open('note added failed' ,'EndNow',{duration: 3000});
+        this.snackBar.open('note added failed', 'EndNow', { duration: 3000 });
       }
     )
   }

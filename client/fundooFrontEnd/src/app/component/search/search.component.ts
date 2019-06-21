@@ -18,9 +18,8 @@ export class SearchComponent implements OnInit {
         
       this.searhNotes=response;
       console.log("Searched notes",this.searhNotes)
-      console.log()
-      }
-      )
+     
+      })
       }
       
   

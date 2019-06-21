@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./archive.component.scss']
 })
 export class ArchiveComponent implements OnInit {
- data:any;
+  data: any;
   notes: any[];
   items: any[];
   constructor(
@@ -18,14 +18,14 @@ export class ArchiveComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   this.retriveCardsForArchive();
+    this.retriveCardsForArchive();
   }
 
   retriveCardsForArchive() {
     this.note.getNoteForArchive(this.notes).subscribe(
       data => {
         console.log("data of getAllNotes in archive: ", data);
-       this.notes = data['data']
+        this.notes = data['data']
       },
       error => {
         console.log("error of getAllNotes in archive: ", error);
@@ -35,7 +35,7 @@ export class ArchiveComponent implements OnInit {
   }
 
 
- 
+
   openDialogbox(item): void {
     console.log("this is item", item)
     const dialogRef = this.dialog.open(DialogBoxComponent, {

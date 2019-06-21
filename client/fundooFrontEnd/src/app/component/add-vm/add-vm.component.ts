@@ -11,7 +11,7 @@ import { VMComponent } from '../vm/vm.component';
 })
 export class AddVMComponent implements OnInit {
   model: any;
-  data:any;
+  data: any;
   userName = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required]);
   phone = new FormControl('', [Validators.required]);
@@ -19,33 +19,33 @@ export class AddVMComponent implements OnInit {
   endDate = new FormControl('', [Validators.required]);
   gitId = new FormControl('', [Validators.required]);
 
-  constructor( private vmService:VmService,
-               private snackBar:MatSnackBar,
-               public dialogRef: MatDialogRef<VMComponent>, ) { }
+  constructor(private vmService: VmService,
+    private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<VMComponent>, ) { }
 
   ngOnInit() {
   }
 
-  creatVm(){
-    this.model={
-      'userName':this.userName.value,
-      'email':this.email.value,
-      'phone':this.phone.value,
-      'startDate':this.startDate.value,
-      'endDate':this.endDate.value,
-      'gitId':this.gitId.value
+  creatVm() {
+    this.model = {
+      'userName': this.userName.value,
+      'email': this.email.value,
+      'phone': this.phone.value,
+      'startDate': this.startDate.value,
+      'endDate': this.endDate.value,
+      'gitId': this.gitId.value
     }
-    console.log("requested data:",this.model);
-    
+    console.log("requested data:", this.model);
+
 
     this.vmService.addVmUser(this.model).subscribe(
       data => {
         console.log("data after creating user: ", data);
-        this.snackBar.open('user added successfully' ,'EndNow',{duration: 3000});
+        this.snackBar.open('user added successfully', 'EndNow', { duration: 3000 });
       },
       error => {
         console.log("error after creating user: ", error);
-        this.snackBar.open('user added failed' ,'EndNow',{duration: 3000});
+        this.snackBar.open('user added failed', 'EndNow', { duration: 3000 });
       }
     )
   }
