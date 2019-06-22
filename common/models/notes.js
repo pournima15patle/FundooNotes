@@ -169,7 +169,7 @@ module.exports = async function (Notes) {
                     if (err) {
                         cb(err)
                     } else {
-                        var response = "Successfully removed";
+                        //var response = "Successfully removed";
                         cb(null, data);
                         // console.log(response);
                     }
@@ -237,7 +237,7 @@ module.exports = async function (Notes) {
                         if (err) {
                             cb(err)
                         } else {
-                            var response = "Successfully removed";
+                            //var response = "Successfully removed";
                             cb(null, data);
                             // console.log(response);
                         }
@@ -341,7 +341,7 @@ module.exports = async function (Notes) {
             }
             else {
                 // delete(id)
-                var response = "Successfully delete";
+               // var response = "Successfully delete";
                 cb(null, data);
 
 

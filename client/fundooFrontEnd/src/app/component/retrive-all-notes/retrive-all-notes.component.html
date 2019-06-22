@@ -2,7 +2,7 @@
   <!-- <div *ngIf='gridView ' fxLayout="row wrap" fxLayoutGap="40px"
     style=" word-wrap: break-word; max-width: 100%;margin-left: 10%;" fxLayoutAlign="start center"> -->
     <div  *ngIf='gridView ' fxLayout="row wrap" fxLayoutAlign="start center" >
-    <div *ngFor='let item of notes' style=" word-wrap: break-word;margin-left: 5%;margin-top: 30px;">
+    <div *ngFor='let item of notes' style=" word-wrap: break-word;margin-left: 7%;margin-top: 30px;">
       <!-- style="padding: 10px" -->
  
       <mat-card [style.backgroundColor]='item.color' fxFlex="auto" fxFlex.gt-sm="100" class="card">
@@ -27,15 +27,6 @@
               </mat-chip>
             </mat-chip-list>
           </div>
-
-          <!-- <div *ngIf="item.label!=null">
-          <mat-chip-list #chipList>
-            <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(item)">
-              {{}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
-          </mat-chip-list>
-        </div> -->
 
           <div fxFlex="50" fxLayoutAlign="start start">
             <app-icon class='mouseover' [noteData]="item" (reminder)='setReminder(item ,$event)'

@@ -5,9 +5,9 @@
         <mat-icon matTooltip="Main Menu">menu</mat-icon>
       </button>
       <div fxFlex="2">
-        <div fxFlex="10" fxLayout="row" fxFlex.gt="500px" [style.fontSize.px]="1" matTooltip="Welcome to Fundoo Notes">
+        <div fxFlex="10" fxLayout="row" fxFlex.sm="100"  matTooltip="Welcome to Fundoo Notes">
           <img src="../../../assets/img/keep.png" />
-          <h3 class="example-app-name" fxLayoutAlign="center center">
+          <h3 class="example-app-name" fxLayoutAlign="center center"  >
             <mat-card-title class="fundoo" fxLayout="row" fxLayoutAlign="end center">
               <span>{{message}}</span>
             </mat-card-title>
@@ -17,12 +17,14 @@
       <!-- ***************************************************************************** -->
       <div fxFlex="70" fxLayoutAlign="end start">
         <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search">
+          <div>
           <button mat-icon-button class="search-button">
             <mat-icon matTooltip="Search">search</mat-icon>
           </button>
-          <input fxFlex="90" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search"
+          <input fxFlex="40" [(ngModel)]="search" #box (keyup.enter)="onEnter(box.value)" matInput placeholder="Search"
             [style.fontSize.px]="16" class="search-window" autocomplete="off" />
           <p>{{value}}</p>
+        </div>
         </mat-form-field>
       </div>
       <div fxFlex="25" fxLayoutAlign="end start" fxLayoutGap="10px">

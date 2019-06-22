@@ -38,6 +38,16 @@ import { GetAllVMUserComponent } from './component/get-all-vmuser/get-all-vmuser
 import { AuthGuard } from './auth-guard';
 
 
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+
+import { environment } from '../environments/environment';
+import { AsyncPipe } from '../../node_modules/@angular/common';
+import { NotificationRemComponent } from './component/notification-rem/notification-rem.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +72,7 @@ import { AuthGuard } from './auth-guard';
     VMComponent,
     AddVMComponent,
     GetAllVMUserComponent,
+    NotificationRemComponent,
   
     
   ],
@@ -72,8 +83,8 @@ import { AuthGuard } from './auth-guard';
     BrowserAnimationsModule,
     HttpClientModule,MatSidenavModule,
     MatToolbarModule,MatDialogModule,
-    ImageCropperModule
-   
+    ImageCropperModule, 
+    
   ],
   providers: [HttpServiceService,UserService,AuthGuard],
   entryComponents:[DialogBoxComponent,EditLabelComponent,SetProfileComponent,AddVMComponent],
